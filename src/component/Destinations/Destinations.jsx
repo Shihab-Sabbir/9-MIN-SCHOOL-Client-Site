@@ -37,8 +37,8 @@ function Destinations() {
 
     return (
         <div className={isMenuOpen ? 'pt-[250px]' : ''}>
-            <div className='flex flex-col justify-center items-center px-4 pt-4'>
-                <p className='text-gray-400 py-5 '>Showing courses {start} to {end - 1} out of {pages}</p>
+            <div className='flex flex-col justify-start items-center px-4 pt-2 min-h-screen'>
+                <p className='text-gray-400 pb-5 '>Showing courses {start} to {end - 1} out of {pages}</p>
                 <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'>
                     {
                         data?.map(course => <Destination

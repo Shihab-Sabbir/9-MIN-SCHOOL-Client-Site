@@ -14,13 +14,13 @@ export const router = createBrowserRouter([
     {
         path: '/', errorElement: <ErrorPage />, element: <Layout />, children: [
             {
-                path: '/', loader: async ({params}) => {
+                path: '/', loader: async ({ params }) => {
                     return fetch('http://localhost:5000/hotels/slider');
                 }, element: <Home />
             },
             { path: '/register', element: <Register /> },
             { path: '/login', element: <Login /> },
-            { path: '/destinations', element: <Destinations /> },
+            { path: '/courses', element: <Destinations /> },
             { path: '/booking', element: <ProtectedRoute><Booking /></ProtectedRoute> },
             { path: '/profile', element: <Profile /> },
             {
