@@ -28,7 +28,7 @@ function Header({ setSearch, toggle }) {
                         className="inline-flex items-center"
                     >
                         <span className="ml-2 text-xl font-['Montserrat'] font-bold tracking-wide text-gray-100 uppercase">
-                            <span className='text-3xl'>9</span> <span>m<span className='text-red-600'>i</span>n sch<spna className='text-red-600'>oo</spna>l</span>
+                            <span className='text-3xl'>9</span> <span>m<span className='text-red-600'>i</span>n sch<span className='text-red-600'>oo</span>l</span>
                         </span>
                     </Link>
                     <ul className="items-center hidden space-x-8 lg:flex">

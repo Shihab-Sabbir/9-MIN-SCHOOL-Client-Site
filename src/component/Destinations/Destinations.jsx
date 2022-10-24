@@ -1,16 +1,21 @@
 import { Pagination, Sidebar } from 'flowbite-react';
 import React, { useEffect, useState } from 'react'
-import { useLoaderData, useOutletContext } from 'react-router-dom';
+import { Link, useLoaderData, useOutletContext } from 'react-router-dom';
 import Destination from './Destination';
-
+import { FiMonitor } from 'react-icons/fi'
 function Destinations() {
     let [page, setPage] = useState(1);
+    const [allCourse, setAllCourse] = useState([]);
     const [locations, setLocations] = useState([]);
 
     // const destinations = useLoaderData();
     useEffect(() => {
         fetch(`http://localhost:5000/courses/${page}`).then(res => res.json()).then(data => setLocations(data)).catch(err => console.log(err));
     }, [page]);
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/courses`).then(res => res.json()).then(data => setAllCourse(data)).catch(err => console.log(err));
+    }, []);
 
     const { pages, data, start, end } = locations;
     const pageNumber = Math.ceil(pages / 4);
@@ -61,55 +66,21 @@ function Destinations() {
                     </div>
                 </div>
                 <div>
-                    <div className="w-fit lg:h-full pt-6 px-2">
+                    <div className="w-full lg:h-fit p-2">
+                        <p className='text-center uppercase text-sm font-bold'>all courses at a glance</p>
                         <Sidebar aria-label="Sidebar with multi-level dropdown example">
                             <Sidebar.Items>
-                                <Sidebar.ItemGroup>
-                                    <Sidebar.Item
-                                        href="#"
-
-                                    >
-                                        Dashboard
-                                    </Sidebar.Item>
-                                    <Sidebar.Collapse
-
-                                        label="E-commerce"
-                                    >
-                                        <Sidebar.Item href="#">
-                                            Products
-                                        </Sidebar.Item>
-                                    </Sidebar.Collapse>
-                                    <Sidebar.Item
-                                        href="#"
-                                    // icon={ }
-                                    >
-                                        Inbox
-                                    </Sidebar.Item>
-                                    <Sidebar.Item
-                                        href="#"
-
-                                    >
-                                        Users
-                                    </Sidebar.Item>
-                                    <Sidebar.Item
-                                        href="#"
-
-                                    >
-                                        Products
-                                    </Sidebar.Item>
-                                    <Sidebar.Item
-                                        href="#"
-
-                                    >
-                                        Sign In
-                                    </Sidebar.Item>
-                                    <Sidebar.Item
-                                        href="#"
-
-                                    >
-                                        Sign Up
-                                    </Sidebar.Item>
-                                </Sidebar.ItemGroup>
+                                <ul>
+                                    {
+                                        allCourse?.map(course =>
+                                            <p
+                                                key={course.id}
+                                                className='flex items-center '
+                                            >   <FiMonitor className='text-sm pr-2' />
+                                                <Link to={`../courses/${course.id}`} className='text-xs hover:bg-slate-200 p-1 w-full rounded-md'>{course.name.length > 30 ? course.name.slice(0, 30) + '...' : course.name}</Link>
+                                            </p>)
+                                    }
+                                </ul>
                             </Sidebar.Items>
                         </Sidebar>
                     </div>

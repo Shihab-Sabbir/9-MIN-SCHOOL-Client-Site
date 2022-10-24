@@ -24,7 +24,7 @@ export const router = createBrowserRouter([
             { path: '/payment', element: <ProtectedRoute><Booking /></ProtectedRoute> },
             { path: '/profile', element: <Profile /> },
             {
-                path: '/hotels/:id', loader: async ({ params }) => {
+                path: '/courses/:id', loader: async ({ params }) => {
                     return fetch(`http://localhost:5000/course/${params.id}`);
                 }, element: <Hotel />
             },
