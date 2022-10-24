@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { Link, useLocation, useNavigate, useOutletContext } from 'react-router-dom';
 import { getAuth, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 import app from '../../firebase/firebase.config';
@@ -7,6 +7,7 @@ import Logout from '../Logout/Logout';
 import toast from 'react-hot-toast';
 function Login() {
     const [newUser, setNewUser] = useState(false);
+    const [error, setError] = useState('');
     const { isMenuOpen } = useOutletContext();
     const navigate = useNavigate();
     const auth = getAuth(app);
@@ -27,11 +28,13 @@ function Login() {
                 const user = userCredential.user;
                 setUser(user);
                 toast.success('Successfully Login');
+                setError('');
                 navigate(from, { replace: true });
             })
             .catch((error) => {
                 const errorMessage = error.message;
-                toast.error(errorMessage)
+                toast.error(errorMessage);
+                setError(errorMessage);
             });
     }
 
@@ -115,6 +118,7 @@ function Login() {
                             <label className='text-sm' htmlFor="remember">New user ?</label>
                         </div>
                         <p onClick={handlePasswordReset} className='text-sm underline text-purple-500 cursor-pointer pt-[20px]'>Forget password ?</p>
+                        <p className='text-xs uppercase font-bold text-red-500 pt-[30px]'>{error}</p>
                         <div className="flex items-center justify-center mt-8">
                             <button className="text-white py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5" type='submit' >            Sign in
                             </button>

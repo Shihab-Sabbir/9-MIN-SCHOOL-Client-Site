@@ -9,12 +9,14 @@ import replacement from '../../asset/replacement.png'
 function Hotel() {
     const data = useLoaderData();
     const { name, image, cost, details } = data;
+    const { user } = useContext(AuthContext);
     const { isMenuOpen } = useOutletContext();
     const navigate = useNavigate();
     const doc = new jsPDF('p', 'px', 'letter');
     const input = useRef()
-    const {  setProduct } = useContext(AuthContext);
+    const { setProduct } = useContext(AuthContext);
     function handleOnclick() {
+        localStorage.setItem(`${user.uid}-course`, JSON.stringify(data));
         setProduct(data);
         navigate('/payment');
     }
@@ -54,9 +56,10 @@ function Hotel() {
                         </div>
                         <p className="py-6"><span className='font-bold text-sm'>Course Details : </span>{details}</p>
                         <p className="py-6"><span className='font-bold text-sm'>Course Price : </span><span className='text-lg'>$</span>{cost}</p>
-                        <button className="p-2 bg-lime-500 shadow-md rounded-md border hover:border-lime-600 hover:bg-white hover:text-lime-600 text-xs uppercase font-bold text-white" onClick={handleOnclick}>Get premium access</button>
-                        <br />
-                        <button className="p-2 bg-slate-800 rounded-md hover:bg-slate-200 hover:text-black text-xs uppercase shadow-lg font-bold text-white mt-10" onClick={() => navigate('/courses')}>Back</button>
+                        <div className='w-full flex items-center justify-between'>
+                            <button className="p-2 bg-lime-500 shadow-md rounded-md border hover:border-lime-600 hover:bg-white hover:text-lime-600 text-xs uppercase font-bold text-white" onClick={handleOnclick}>Get premium access</button>
+                            <button className="p-2 bg-slate-800 rounded-md hover:bg-slate-200 hover:text-black text-xs uppercase shadow-lg font-bold text-white " onClick={() => navigate('/courses')}>Back</button>
+                        </div>
                     </div>
                 </div>
             </div>
