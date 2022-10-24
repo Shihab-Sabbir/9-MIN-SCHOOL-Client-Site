@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useLocation, useNavigate, useOutletContext } from 'react-router-dom';
 import app from '../../firebase/firebase.config';
 import { AuthContext } from '../../UserContext/UserContext';
+import toast from 'react-hot-toast';
 
 function Register() {
     const [newUser, setNewUser] = useState(false);
@@ -17,42 +18,44 @@ function Register() {
     const from = location.state?.from?.pathname || '/';
     useEffect(() => {
         if (!terms) {
-            active.current.disabled = true;
             warning.current.classList.add('text-red-600', 'font-bold');
         }
         else {
-            active.current.disabled = false;
             warning.current.classList.remove('text-red-600', 'font-bold');
             warning.current.classList.add('text-green-500');
         }
     }, [terms])
-
     function handleSubmit(event) {
         event.preventDefault();
-        setLoading(true);
-        const form = event.target;
-        const name = form.name.value;
-        const email = form.email.value;
-        const password = form.password.value;
-        const photo = form.photo.value;
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // const user = userCredential.user;
-                updateProfile(auth.currentUser, {
-                    displayName: name, photoURL: photo
-                }).then(() => {
-                    auth.currentUser.photoURL = photo;
-                    setUser(auth.currentUser);
-                    navigate(from, { replace: true });
-                }).catch((error) => {
-                    console.log(error)
+        if (terms) {
+            setLoading(true);
+            const form = event.target;
+            const name = form.name.value;
+            const email = form.email.value;
+            const password = form.password.value;
+            const photo = form.photo.value;
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    // const user = userCredential.user;
+                    updateProfile(auth.currentUser, {
+                        displayName: name, photoURL: photo
+                    }).then(() => {
+                        auth.currentUser.photoURL = photo;
+                        setUser(auth.currentUser);
+                        navigate(from, { replace: true });
+                        toast.success('Successfully registered');
+                    }).catch((error) => {
+                        console.log(error)
+                    });
+                })
+                .catch((error) => {
+                    const errorMessage = error.message;
+                    toast.error(errorMessage)
                 });
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(error)
-            });
+        }
+        else {
+            toast.error('Please accept terms and policy !');
+        }
     }
     return (
         <div className={isMenuOpen ? 'p-8 lg:w-1/2 mx-auto pt-[300px]' : 'p-8 lg:w-1/2 mx-auto'}>
@@ -105,8 +108,7 @@ function Register() {
                         <label className='text-sm' htmlFor="remember">Already have an account ?</label>
                     </div>
                     <div className="flex items-center justify-center mt-8">
-                        <button className="text-white py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5" ref={active} type='submit'>            Create Account
-                        </button>
+                        <button className="text-white py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5" ref={active} type='submit'> Create Account </button>
                     </div>
                 </form>
             </div>

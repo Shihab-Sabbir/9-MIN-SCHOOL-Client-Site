@@ -22,7 +22,7 @@ function Destination({ course }) {
             </a>
             <div className="p-5">
                 <div>
-                    <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white min-h-[70px]">{name}</h5>
+                    <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white min-h-[70px] lg:min-h-[100px]">{name}</h5>
                 </div>
                 <Link to={`../courses/${id}`} className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     Details

@@ -1,10 +1,10 @@
-import React, { useContext, useState } from 'react'
-import { useLocation, useNavigate, useOutletContext } from 'react-router-dom';
-import { getAuth, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, signInWithEmailAndPassword } from "firebase/auth";
+import React, { useContext, useRef, useState } from 'react'
+import { Link, useLocation, useNavigate, useOutletContext } from 'react-router-dom';
+import { getAuth, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 import app from '../../firebase/firebase.config';
 import { AuthContext } from '../../UserContext/UserContext';
 import Logout from '../Logout/Logout';
-
+import toast from 'react-hot-toast';
 function Login() {
     const [newUser, setNewUser] = useState(false);
     const { isMenuOpen } = useOutletContext();
@@ -14,6 +14,7 @@ function Login() {
     const GitHubProvider = new GithubAuthProvider();
     const { user, setUser, setLoading } = useContext(AuthContext);
     const location = useLocation();
+    const userEmail = useRef();
     let from = location.state?.from?.pathname || '/';
     function handleSubmit(event) {
         event.preventDefault();
@@ -25,12 +26,12 @@ function Login() {
             .then((userCredential) => {
                 const user = userCredential.user;
                 setUser(user);
+                toast.success('Successfully Login');
                 navigate(from, { replace: true });
             })
             .catch((error) => {
-                const errorCode = error.code;
                 const errorMessage = error.message;
-                console.log(errorMessage)
+                toast.error(errorMessage)
             });
     }
 
@@ -40,11 +41,26 @@ function Login() {
             .then((result) => {
                 const user = result.user;
                 setUser(user);
+                toast.success('Successfully Login');
                 navigate(from, { replace: true });
             }).catch((error) => {
                 const errorMessage = error.message;
-                console.log(errorMessage)
+                toast.error(errorMessage)
             });
+    }
+    function handlePasswordReset() {
+        if (userEmail.current.value)
+            sendPasswordResetEmail(auth, userEmail.current.value)
+                .then(() => {
+                    toast.success('Password reset mail has been sent to your Email, please check inbox or spam folder');
+                })
+                .catch((error) => {
+                    const errorMessage = error.message;
+                    toast.error(errorMessage)
+                });
+        else {
+            toast.error('Please put your vaid email address')
+        }
     }
     return (
         <div className={isMenuOpen ? 'p-8 lg:w-1/2 mx-auto pt-[270px] min-h-screen' : 'p-8 lg:w-1/2 mx-auto min-h-screen'}>
@@ -75,7 +91,7 @@ function Login() {
                     </p>
                     <form className="mt-6" onSubmit={handleSubmit}>
                         <div className="relative">
-                            <input required className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline" id="email" name='email' type="email" placeholder="Email" />
+                            <input required ref={userEmail} className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline" id="email" name='email' type="email" placeholder="Email" />
                             <div className="absolute left-0 inset-y-0 flex items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 ml-3 text-gray-400 p-1" viewBox="0 0 20 20" fill="currentColor"            >
                                     <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
@@ -98,6 +114,7 @@ function Login() {
                             }} />
                             <label className='text-sm' htmlFor="remember">New user ?</label>
                         </div>
+                        <p onClick={handlePasswordReset} className='text-sm underline text-purple-500 cursor-pointer pt-[20px]'>Forget password ?</p>
                         <div className="flex items-center justify-center mt-8">
                             <button className="text-white py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5" type='submit' >            Sign in
                             </button>
