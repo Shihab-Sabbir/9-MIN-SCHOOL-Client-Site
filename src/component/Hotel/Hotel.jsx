@@ -28,7 +28,7 @@ function Hotel() {
         doc.text(name, 20, 320);
         doc.text(`Course Details : ${details}`, 20, 350, { maxWidth: 450 });
         doc.text(`Price : $${cost}`, 20, 400);
-        doc.text('Thank for visiting us !', 20, 440);
+        doc.text('Thank you for visiting us !', 20, 440);
         doc.output('datauri');
         doc.save(`${name}.pdf`);
     }

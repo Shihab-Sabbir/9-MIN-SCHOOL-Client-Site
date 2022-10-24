@@ -1,4 +1,4 @@
-import { Pagination } from 'flowbite-react';
+import { Pagination, Sidebar } from 'flowbite-react';
 import React, { useEffect, useState } from 'react'
 import { useLoaderData, useOutletContext } from 'react-router-dom';
 import Destination from './Destination';
@@ -37,26 +37,82 @@ function Destinations() {
 
     return (
         <div className={isMenuOpen ? 'pt-[250px]' : ''}>
-            <div className='flex flex-col justify-start items-center px-4 pt-2 min-h-screen'>
-                <p className='text-gray-400 pb-5 '>Showing courses {start} to {end - 1} out of {pages}</p>
-                <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'>
-                    {
-                        data?.map(course => <Destination
-                            key={course.id}
-                            course={course}
-                        />)
-                    }
+            <div className='lg:flex-row flex-col flex'>
+                <div className='flex flex-col justify-start items-center px-4 pt-2 min-h-screen'>
+                    <p className='text-gray-400 pb-5 '>Showing courses {start} to {end - 1} out of {pages}</p>
+                    <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'>
+                        {
+                            data?.map(course => <Destination
+                                key={course.id}
+                                course={course}
+                            />)
+                        }
+                    </div>
+                    <div className="flex items-center justify-center text-center my-8">
+                        <Pagination onClick={handleClick}
+                            currentPage={page}
+                            layout="pagination"
+                            onPageChange={onPageChange}
+                            showIcons={true}
+                            totalPages={pageNumber || 0}
+                            previousLabel="Go back"
+                            nextLabel="Go forward"
+                        />
+                    </div>
                 </div>
-                <div className="flex items-center justify-center text-center my-8">
-                    <Pagination onClick={handleClick}
-                        currentPage={page}
-                        layout="pagination"
-                        onPageChange={onPageChange}
-                        showIcons={true}
-                        totalPages={pageNumber || 0}
-                        previousLabel="Go back"
-                        nextLabel="Go forward"
-                    />
+                <div>
+                    <div className="w-fit lg:h-full pt-6 px-2">
+                        <Sidebar aria-label="Sidebar with multi-level dropdown example">
+                            <Sidebar.Items>
+                                <Sidebar.ItemGroup>
+                                    <Sidebar.Item
+                                        href="#"
+
+                                    >
+                                        Dashboard
+                                    </Sidebar.Item>
+                                    <Sidebar.Collapse
+
+                                        label="E-commerce"
+                                    >
+                                        <Sidebar.Item href="#">
+                                            Products
+                                        </Sidebar.Item>
+                                    </Sidebar.Collapse>
+                                    <Sidebar.Item
+                                        href="#"
+                                    // icon={ }
+                                    >
+                                        Inbox
+                                    </Sidebar.Item>
+                                    <Sidebar.Item
+                                        href="#"
+
+                                    >
+                                        Users
+                                    </Sidebar.Item>
+                                    <Sidebar.Item
+                                        href="#"
+
+                                    >
+                                        Products
+                                    </Sidebar.Item>
+                                    <Sidebar.Item
+                                        href="#"
+
+                                    >
+                                        Sign In
+                                    </Sidebar.Item>
+                                    <Sidebar.Item
+                                        href="#"
+
+                                    >
+                                        Sign Up
+                                    </Sidebar.Item>
+                                </Sidebar.ItemGroup>
+                            </Sidebar.Items>
+                        </Sidebar>
+                    </div>
                 </div>
             </div>
         </div>
