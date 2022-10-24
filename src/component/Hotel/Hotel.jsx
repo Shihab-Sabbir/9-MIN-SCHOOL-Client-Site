@@ -3,14 +3,27 @@ import React, { useContext } from 'react'
 import { Link, useLoaderData, useNavigate, useOutletContext } from 'react-router-dom';
 import { AuthContext } from '../../UserContext/UserContext';
 import { BsDownload } from 'react-icons/bs';
+import { jsPDF } from "jspdf";
 function Hotel() {
     const data = useLoaderData();
     const { name, image, cost, details } = data;
-    const { isMenuOpen} = useOutletContext();
+    const { isMenuOpen } = useOutletContext();
     const navigate = useNavigate();
+    const doc = new jsPDF();
+
     function handleOnclick() {
         navigate('/booking');
     }
+
+    function handleDownload() {
+        doc.text(name, 10, 10);
+        doc.text(details, 10, 10);
+        doc.text(`${cost}`, 10, 10);
+        doc.addImage(image, 'PNG', 15, 40, 200, 114);
+        doc.output('datauri');
+        doc.save(`${name}.pdf`);
+    }
+
     return (
         <div className={isMenuOpen ? 'pt-[270px] mb-3 px-3 min-h-screen' : 'mb-3 p-3 min-h-screen'}>
             <div className="hero min-h-screen bg-base-200 lg:max-w-[1100px] mx-auto">
@@ -24,7 +37,7 @@ function Hotel() {
                                 style="dark"
                                 placement='bottom'
                             >
-                                <BsDownload className='text-4xl cursor-pointer max-h-fit' />
+                                <BsDownload className='text-4xl cursor-pointer max-h-fit' onClick={handleDownload} />
                             </Tooltip>
                         </div>
                         <p className="py-6"><span className='font-bold text-sm'>Course Details : </span>{details}</p>
