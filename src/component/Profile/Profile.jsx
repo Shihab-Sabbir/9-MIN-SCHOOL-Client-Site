@@ -14,7 +14,6 @@ function Profile() {
                         <div className="grid gap-10 lg:grid-cols-2">
                             <div className="lg:pr-10 order-2">
                                 <a
-                                    href="#"
                                     aria-label="Go Home"
                                     title="Logo"
                                     className="inline-block mb-5"
@@ -53,7 +52,6 @@ function Profile() {
                                 <hr className="mb-5 border-gray-300" />
                                 <div className="flex items-center space-x-4">
                                     <a
-                                        href="#"
                                         className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
                                     >
                                         <svg viewBox="0 0 24 24" fill="currentColor" className="h-5">
@@ -61,7 +59,7 @@ function Profile() {
                                         </svg>
                                     </a>
                                     <a
-                                        href="#"
+                                        
                                         className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
                                     >
                                         <svg viewBox="0 0 30 30" fill="currentColor" className="h-6">
@@ -70,7 +68,7 @@ function Profile() {
                                         </svg>
                                     </a>
                                     <a
-                                        href="#"
+                                        
                                         className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
                                     >
                                         <svg viewBox="0 0 24 24" fill="currentColor" className="h-5">
@@ -78,7 +76,7 @@ function Profile() {
                                         </svg>
                                     </a>
                                     <a
-                                        href="#"
+                                        
                                         className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
                                     >
                                         <svg viewBox="0 0 24 24" fill="currentColor" className="h-6">
@@ -89,7 +87,7 @@ function Profile() {
                             </div>
                             <div>
                                 <img
-                                    className="object-cover w-full h-56 rounded shadow-lg sm:h-96 order-1"
+                                    className="object-cover w-fit h-56 rounded shadow-lg sm:h-96 order-1"
                                     src={user?.photoURL || 'https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1031&q=80'}
                                     alt=""
                                 />

@@ -8,6 +8,7 @@ import Layout from "../component/Layout/Layout";
 import Login from "../component/Login/Login";
 import Profile from "../component/Profile/Profile";
 import Register from "../component/Register/Register";
+import Search from "../component/Search/Search";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 export const router = createBrowserRouter([
@@ -27,6 +28,11 @@ export const router = createBrowserRouter([
                 path: '/courses/:id', loader: async ({ params }) => {
                     return fetch(`http://localhost:5000/course/${params.id}`);
                 }, element: <Hotel />
+            },
+            {
+                path: '/search/:name', loader: async ({ params }) => {
+                    return fetch(`http://localhost:5000/search/${params.name}`);
+                }, element: <Search />
             },
         ]
     }

@@ -59,14 +59,14 @@ function Header({ setSearch, toggle }) {
                                 title="Product pricing"
                                 className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
                             >
-                                {(!user?.uid) ? 'Log-In' : 'Log out'}
+                                {(!user?.uid) ? 'Log in' : 'Log out'}
                             </Link>
                         </li>
                         <li>
                             <form className="relative min-w-[280px]" onSubmit={handleSearchInput}>
                                 <input type="search" id="default-search"
                                     name='search'
-                                    className="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Destinations..." required />
+                                    className="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Courses..." required />
                                 <button type="submit" className=" absolute right-2.5 bottom-2.5 bg-black rounded-lg text-sm px-4 py-2 hover:scale-105">
                                     <svg aria-hidden="true" className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                                 </button>
@@ -98,10 +98,10 @@ function Header({ setSearch, toggle }) {
                             </button>
                             <div className="inline-flex items-center mx-2 sm:mx-4 md:mx-8">
                             </div>
-                            <Link
+                            {user?.uid && <Link
                                 to="/profile"
                                 aria-label="Company"
-                                title="Company"
+                                title={user.displayName}
 
                             >
                                 <Avatar
@@ -109,7 +109,7 @@ function Header({ setSearch, toggle }) {
                                     bordered={true}
 
                                 />
-                            </Link>
+                            </Link>}
                         </div>
                         {isMenuOpen && (
                             <div className="absolute top-0 left-0 w-full">
@@ -184,7 +184,7 @@ function Header({ setSearch, toggle }) {
                                                 <form className="relative" onSubmit={handleSearchInput}>
                                                     <input type="search" id="default-search"
                                                         name='search'
-                                                        className="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Destinations..." required />
+                                                        className="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Courses..." required />
                                                     <button type="submit" className=" absolute right-2.5 bottom-2.5 bg-black rounded-lg text-sm px-4 py-2 hover:scale-105">
                                                         <svg aria-hidden="true" className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                                                     </button>
@@ -206,17 +206,19 @@ function Header({ setSearch, toggle }) {
                             </div>
                         )}
                     </div>
-                    <Link
-                        to="/profile"
-                        aria-label="Company"
-                        title="Company"
-                        className="items-center hidden lg:inline-flex"
-                    >
-                        <Avatar
-                            img={user?.photoURL}
-                            bordered={true}
-                        />
-                    </Link>
+                    {user?.uid &&
+                        <Link
+                            to="/profile"
+                            aria-label="Company"
+                            title={user.displayName}
+                            className="items-center hidden lg:inline-flex"
+                        >
+                            <Avatar
+                                img={user?.photoURL}
+                                bordered={true}
+                            />
+                        </Link>
+                    }
                 </div>
             </div>
         </div>

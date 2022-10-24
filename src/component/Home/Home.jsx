@@ -7,9 +7,9 @@ function Home() {
     const { backGroung } = useOutletContext();
     const data = useLoaderData();
     return (
-        <div style={{ backgroundImage: `url(${backGroung})`,backgroundSize:'cover',backgroundRepeat:'no-repeat' }}>
+        <div style={{ backgroundImage: `url(${backGroung})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
             <div className={isMenuOpen ? 'pt-[350px]' : 'pt-[120px]'}>
-               
+
                 <div>
                     <div className="flex min-w-full justify-center px-2 py-16 lg:pt-0  lg:pb-0 ">
                         <div className="mb-16 lg:my-40 lg:max-w-lg lg:pr-5">
@@ -29,7 +29,7 @@ function Home() {
                             </p>
                             <div className="flex items-center">
                                 <Link
-                                    to="/destinations"
+                                    to="/courses"
                                     className="inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-green-600 bg-opacity-30 hover:bg-opacity-50 focus:shadow-outline focus:outline-none"
                                 >
                                     Get started
