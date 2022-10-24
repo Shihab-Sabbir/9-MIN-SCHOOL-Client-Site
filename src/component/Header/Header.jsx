@@ -1,9 +1,10 @@
 import { Avatar } from 'flowbite-react';
-import React, { useContext,  useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../UserContext/UserContext';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
+import logo from '../../asset/logo.png'
 function Header({ setSearch, toggle }) {
     const { isMenuOpen, setIsMenuOpen } = toggle;
     const [location, setLocation] = useState('');
@@ -26,23 +27,8 @@ function Header({ setSearch, toggle }) {
                         title="Company"
                         className="inline-flex items-center"
                     >
-                        <svg
-                            className="w-8 text-teal-accent-400"
-                            viewBox="0 0 24 24"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeMiterlimit="10"
-                            stroke="currentColor"
-                            fill="none"
-                        >
-                            <rect x="3" y="1" width="7" height="12" />
-                            <rect x="3" y="17" width="7" height="6" />
-                            <rect x="14" y="1" width="7" height="6" />
-                            <rect x="14" y="11" width="7" height="12" />
-                        </svg>
                         <span className="ml-2 text-xl font-['Montserrat'] font-bold tracking-wide text-gray-100 uppercase">
-                            Booking.com
+                            <span className='text-3xl'>9</span> <span>m<span className='text-red-600'>i</span>n sch<spna className='text-red-600'>oo</spna>l</span>
                         </span>
                     </Link>
                     <ul className="items-center hidden space-x-8 lg:flex">
@@ -53,17 +39,7 @@ function Header({ setSearch, toggle }) {
                                 title="Our product"
                                 className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
                             >
-                                Booking
-                            </Link>
-                        </li>
-                        <li>
-                            <Link
-                                to="/trending"
-                                aria-label="Our product"
-                                title="Our product"
-                                className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
-                            >
-                                Trending
+                                Payment
                             </Link>
                         </li>
                         <li>
@@ -73,7 +49,7 @@ function Header({ setSearch, toggle }) {
                                 title="Our product"
                                 className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
                             >
-                                Destinations
+                                Couses
                             </Link>
                         </li>
                         <li>
@@ -162,7 +138,7 @@ function Header({ setSearch, toggle }) {
                                                     <rect x="14" y="11" width="7" height="12" />
                                                 </svg>
                                                 <span className="ml-2 text-xl font-mono font-bold tracking-wide text-gray-800 uppercase">
-                                                    Booking.com
+                                                    <span className='text-3xl'>9</span> <span>m<span className='text-red-600'>i</span>n sch<spna className='text-red-600'>oo</spna>l</span>
                                                 </span>
                                             </Link>
                                         </div>
@@ -191,17 +167,7 @@ function Header({ setSearch, toggle }) {
                                                     title="Our product"
                                                     className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                                                 >
-                                                    Booking
-                                                </Link>
-                                            </li>
-                                            <li onClick={() => setIsMenuOpen(false)}>
-                                                <Link
-                                                    to="/trending"
-                                                    aria-label="Our product"
-                                                    title="Our product"
-                                                    className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
-                                                >
-                                                    Trending
+                                                    Payment
                                                 </Link>
                                             </li>
                                             <li onClick={() => setIsMenuOpen(false)}>
@@ -211,7 +177,7 @@ function Header({ setSearch, toggle }) {
                                                     title="Our product"
                                                     className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                                                 >
-                                                    Destinations
+                                                    Courses
                                                 </Link>
                                             </li>
                                             <li>

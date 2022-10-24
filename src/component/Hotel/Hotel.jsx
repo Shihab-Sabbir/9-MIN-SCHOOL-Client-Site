@@ -1,39 +1,37 @@
-import { Button } from 'flowbite-react';
+import { Button, Tooltip } from 'flowbite-react';
 import React, { useContext } from 'react'
 import { Link, useLoaderData, useNavigate, useOutletContext } from 'react-router-dom';
 import { AuthContext } from '../../UserContext/UserContext';
-
+import { BsDownload } from 'react-icons/bs';
 function Hotel() {
     const data = useLoaderData();
-    const { name, activity, address, checkin, content, email, price, geo, directions, phone, tollfree, type, url, checkout } = data;
-    const { isMenuOpen, totalStay } = useOutletContext();
-    const { setPrice } = useContext(AuthContext);
+    const { name, image, cost, details } = data;
+    const { isMenuOpen} = useOutletContext();
     const navigate = useNavigate();
     function handleOnclick() {
-        setPrice(price);
         navigate('/booking');
     }
     return (
-        <div className={isMenuOpen ? 'pt-[270px] mb-3 px-3 min-h-screen' : 'mb-3 px-3 min-h-screen'}>
-            <div className="hero min-w-[full] bg-base-200 flex justify-center items-center">
-                <div className="hero-content flex flex-col xl:flex-row lg:justify-between p-2">
-                    <div className='p-2'>
-                        <h1 className="text-5xl font-bold mb-3">{name}</h1>
-                        Visit Website: <a href={url} target="_blank" className="my-2 mt-2 text-blue-600">{url}</a>
-                        <p className="py-2">Address :{address}</p>
-                        <p className="py-2">Per Night : ${price}</p>
-                        <p className="py-2 max-w-[700px]">Direction :{directions ? directions : "From Penderyn, follow Cwm Cadlan road from Lamb Hotel for 1.5 miles, you'll see sign and yellow grit bin at the gate on your left."}</p>
-                        <p className="py-2 max-w-[700px]">{content}</p>
-                        <p className="py-2">Chech-In Time : {checkin ? checkin : '11:00'}</p>
-                        <p className="py-2">Check-Out Time: {checkout ? checkout : '12:30'}</p>
-                        <p className="py-2">Phone : {phone ? phone : "+44 0 1685 813609"}</p>
-                        <p className="py-2">Email : {email ? email : "willow.walks@hotmail.co.uk"}</p>
-                        <p className="py-2">Per Night Cost : ${price ? price : '$10'}</p>
-                        <p className="py-2">Tax : {tollfree ? tollfree : 'No Tax'}</p>
-                        <p className="py-2">Total Cost : ${totalStay * price} for {totalStay} Nights</p>
-                        <div className='max-w-fit' onClick={handleOnclick}>
-                            <Button outline={true}>Ready to Book</Button>
+        <div className={isMenuOpen ? 'pt-[270px] mb-3 px-3 min-h-screen' : 'mb-3 p-3 min-h-screen'}>
+            <div className="hero min-h-screen bg-base-200 lg:max-w-[1100px] mx-auto">
+                <div className="hero-content flex flex-col md:flex-row">
+                    <img src={image} className="max-w-full md:min-w-[50%] shadow md:max-h-[500px]" />
+                    <div className='flex flex-col justify-between items-start min-w-full md:min-w-[50%] px-3 pb-1 md:pt-0 pt-5 md:max-h-[500px]'>
+                        <div className='flex justify-between gap-2'>
+                            <h1 className="text-2xl font-bold">{name}</h1>
+                            <Tooltip
+                                content="Download pdf"
+                                style="dark"
+                                placement='bottom'
+                            >
+                                <BsDownload className='text-4xl cursor-pointer max-h-fit' />
+                            </Tooltip>
                         </div>
+                        <p className="py-6"><span className='font-bold text-sm'>Course Details : </span>{details}</p>
+                        <p className="py-6"><span className='font-bold text-sm'>Course Price : </span><span className='text-lg'>$</span>{cost}</p>
+                        <button className="p-2 bg-lime-500 shadow-md rounded-md border hover:border-lime-600 hover:bg-white hover:text-lime-600 text-xs uppercase font-bold text-white">Enroll Now</button>
+                        <br />
+                        <button className="p-2 bg-slate-800 rounded-md hover:bg-slate-200 hover:text-black text-xs uppercase shadow-lg font-bold text-white mt-10">Back</button>
                     </div>
                 </div>
             </div>

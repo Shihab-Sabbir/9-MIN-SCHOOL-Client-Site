@@ -9,17 +9,28 @@ function Destinations() {
 
     // const destinations = useLoaderData();
     useEffect(() => {
-        fetch(`https://booking-site-two.vercel.app/destinations/${page}`).then(res => res.json()).then(data => setLocations(data)).catch(err => console.log(err));
+        fetch(`http://localhost:5000/courses/${page}`).then(res => res.json()).then(data => setLocations(data)).catch(err => console.log(err));
     }, [page]);
 
     const { pages, data, start, end } = locations;
+    const pageNumber = Math.ceil(pages / 4);
     const { isMenuOpen } = useOutletContext();
     function onPageChange() {
     }
     function handleClick(event) {
         const data = event.target.innerText;
-        if (data === 'Go back') { setPage(page - 1) };
-        if (data === 'Go forward') { setPage(page + 1); };
+
+        if (page < pageNumber && data === 'Go forward') {
+            setPage(page + 1)
+        }
+        else if (page === pageNumber && data === 'Go forward') {
+            window.alert('no more course to show')
+        };
+
+        if (page > 1 && data === 'Go back') {
+            setPage(page - 1)
+        };
+
         event.preventDefault();
         event.stopPropagation();
     }
@@ -27,12 +38,12 @@ function Destinations() {
     return (
         <div className={isMenuOpen ? 'pt-[250px]' : ''}>
             <div className='flex flex-col justify-center items-center px-4 pt-4'>
-                <p className='text-gray-400 py-5 '>Showing destination {start} to {end - 1} out of {pages}</p>
+                <p className='text-gray-400 py-5 '>Showing courses {start} to {end - 1} out of {pages}</p>
                 <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'>
                     {
-                        data?.map(destination => <Destination
-                            key={destination.id}
-                            destination={destination}
+                        data?.map(course => <Destination
+                            key={course.id}
+                            course={course}
                         />)
                     }
                 </div>
@@ -42,7 +53,7 @@ function Destinations() {
                         layout="pagination"
                         onPageChange={onPageChange}
                         showIcons={true}
-                        totalPages={pages || 0}
+                        totalPages={pageNumber || 0}
                         previousLabel="Go back"
                         nextLabel="Go forward"
                     />

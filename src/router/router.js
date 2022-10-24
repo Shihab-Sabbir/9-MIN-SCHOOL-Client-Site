@@ -15,7 +15,7 @@ export const router = createBrowserRouter([
         path: '/', errorElement: <ErrorPage />, element: <Layout />, children: [
             {
                 path: '/', loader: async ({params}) => {
-                    return fetch('https://booking-site-two.vercel.app/hotels/slider');
+                    return fetch('http://localhost:5000/hotels/slider');
                 }, element: <Home />
             },
             { path: '/register', element: <Register /> },
@@ -25,7 +25,7 @@ export const router = createBrowserRouter([
             { path: '/profile', element: <Profile /> },
             {
                 path: '/hotels/:id', loader: async ({ params }) => {
-                    return fetch(`https://booking-site-two.vercel.app/${params.id}`);
+                    return fetch(`http://localhost:5000/course/${params.id}`);
                 }, element: <Hotel />
             },
         ]

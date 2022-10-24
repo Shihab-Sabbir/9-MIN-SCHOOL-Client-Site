@@ -1,29 +1,28 @@
-import React, { useContext } from 'react'
+import React, { useContext, useRef } from 'react'
 import { Link } from 'react-router-dom';
 import loadingImg from '../../asset/loading.gif'
+import replacement from '../../asset/replacement.png'
 import { AuthContext } from '../../UserContext/UserContext';
-function Destination({ destination }) {
-    const { title, image, name, address, id } = destination;
+function Destination({ course }) {
+    const { title, image, name, address, id } = course;
     const { isOnline } = useContext(AuthContext);
+    const errImg = useRef();
+    const replaceImage = () => {
+        errImg.current.src = replacement;
+    }
     return (
         <div className="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
             <a href="#">
                 {
                     isOnline ?
-                        <img className="rounded-t-lg" src={`https://source.unsplash.com/random/400x400?sig=${id}`} alt="" />
+                        <img className="rounded-t-lg" src={image} ref={errImg} onError={() => { replaceImage() }} />
                         :
                         <img className="rounded-t-lg" src={loadingImg} alt="" />
                 }
             </a>
             <div className="p-5">
-                <a href="#">
-                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{name}</h5>
-                </a>
-                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    City : {title}
-                </p>
-                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    Address : {address ? address : 'Please see datails for address'}
+                <p>
+                    <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">{name}</h5>
                 </p>
                 <Link to={`../hotels/${id}`} className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     Details
