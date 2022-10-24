@@ -21,7 +21,7 @@ export const router = createBrowserRouter([
             { path: '/register', element: <Register /> },
             { path: '/login', element: <Login /> },
             { path: '/courses', element: <Destinations /> },
-            { path: '/booking', element: <ProtectedRoute><Booking /></ProtectedRoute> },
+            { path: '/payment', element: <ProtectedRoute><Booking /></ProtectedRoute> },
             { path: '/profile', element: <Profile /> },
             {
                 path: '/hotels/:id', loader: async ({ params }) => {

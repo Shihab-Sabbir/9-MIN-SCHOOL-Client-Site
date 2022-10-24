@@ -12,7 +12,7 @@ function ProtectedRoute({ children }) {
         }, 1500);
         return (
             <>
-                <div className="text-center pt-[15%]">
+                <div className="text-center pt-[15%] min-h-screen">
                     <Spinner aria-label="Center-aligned spinner example" />
                 </div>
             </>

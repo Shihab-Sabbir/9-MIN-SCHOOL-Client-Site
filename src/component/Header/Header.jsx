@@ -34,7 +34,7 @@ function Header({ setSearch, toggle }) {
                     <ul className="items-center hidden space-x-8 lg:flex">
                         <li>
                             <Link
-                                to="/booking"
+                                to="/payment"
                                 aria-label="Our product"
                                 title="Our product"
                                 className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
@@ -44,7 +44,7 @@ function Header({ setSearch, toggle }) {
                         </li>
                         <li>
                             <Link
-                                to="/destinations"
+                                to="/courses"
                                 aria-label="Our product"
                                 title="Our product"
                                 className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
@@ -162,7 +162,7 @@ function Header({ setSearch, toggle }) {
                                         <ul className="space-y-4">
                                             <li onClick={() => setIsMenuOpen(false)}>
                                                 <Link
-                                                    to="/booking"
+                                                    to="/payment"
                                                     aria-label="Our product"
                                                     title="Our product"
                                                     className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
@@ -172,7 +172,7 @@ function Header({ setSearch, toggle }) {
                                             </li>
                                             <li onClick={() => setIsMenuOpen(false)}>
                                                 <Link
-                                                    to="/destinations"
+                                                    to="/courses"
                                                     aria-label="Our product"
                                                     title="Our product"
                                                     className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"

@@ -38,19 +38,21 @@ function Hotel() {
                 <div className="hero-content flex flex-col md:flex-row" >
                     <img src={image} ref={errImg} onError={() => { replaceImage() }} className="max-w-full md:min-w-[50%] shadow md:max-h-[500px]" />
                     <div className='flex flex-col justify-between items-start min-w-full md:min-w-[50%] px-3 pb-1 md:pt-0 pt-5 md:max-h-[500px]'>
-                        <div className='flex justify-between gap-2'>
-                            <h1 className="text-2xl font-bold">{name}</h1>
-                            <Tooltip
-                                content="Download pdf"
-                                style="dark"
-                                placement='bottom'
-                            >
-                                <BsDownload className='text-4xl cursor-pointer max-h-fit' onClick={handleDownload} />
-                            </Tooltip>
+                        <div className='w-full'>
+                            <div className='flex justify-between gap-2 md:gap-3 lg:gap-4 xl:gap-6'>
+                                <h1 className="text-2xl font-bold">{name}</h1>
+                                <Tooltip
+                                    content="Download pdf"
+                                    style="dark"
+                                    placement='bottom'
+                                >
+                                    <BsDownload className='text-4xl cursor-pointer max-h-fit font-bold border p-1 rounded-md hover:bg-black hover:text-white' onClick={handleDownload} />
+                                </Tooltip>
+                            </div>
                         </div>
                         <p className="py-6"><span className='font-bold text-sm'>Course Details : </span>{details}</p>
                         <p className="py-6"><span className='font-bold text-sm'>Course Price : </span><span className='text-lg'>$</span>{cost}</p>
-                        <button className="p-2 bg-lime-500 shadow-md rounded-md border hover:border-lime-600 hover:bg-white hover:text-lime-600 text-xs uppercase font-bold text-white">Enroll Now</button>
+                        <button className="p-2 bg-lime-500 shadow-md rounded-md border hover:border-lime-600 hover:bg-white hover:text-lime-600 text-xs uppercase font-bold text-white" onClick={() => navigate('/payment')}>Enroll Now</button>
                         <br />
                         <button className="p-2 bg-slate-800 rounded-md hover:bg-slate-200 hover:text-black text-xs uppercase shadow-lg font-bold text-white mt-10" onClick={() => navigate('/courses')}>Back</button>
                     </div>
