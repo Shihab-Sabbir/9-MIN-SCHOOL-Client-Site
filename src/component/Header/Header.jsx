@@ -9,7 +9,7 @@ import './Header.css'
 function Header({ setSearch, toggle }) {
     const { isMenuOpen, setIsMenuOpen } = toggle;
     const [location, setLocation] = useState('');
-    const { user } = useContext(AuthContext);
+    const { user,dark,setDark } = useContext(AuthContext);
     const navigate = useNavigate();
     function handleSearchInput(event) {
         event.preventDefault();
@@ -49,6 +49,9 @@ function Header({ setSearch, toggle }) {
                             >
                                 Couses
                             </NavLink>
+                        </li>
+                        <li>
+                           <button onClick={()=>{setDark(!dark)}}>Dark Mode</button>
                         </li>
                         <li>
                             <NavLink

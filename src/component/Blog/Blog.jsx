@@ -2,15 +2,15 @@ import React from 'react'
 
 function Blog() {
     return (
-        <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+        <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20" >
             <div className="max-w-xl sm:mx-auto lg:max-w-2xl">
                 <div className="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
                     <div>
-                        <p className="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
-                            Brand new
+                        <p className="inline-block  py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 dark:text-white uppercase rounded-full bg-teal-accent-400">
+                            Latest Blog
                         </p>
                     </div>
-                    <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
+                    <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 dark:text-white  sm:text-4xl md:mx-auto">
                         <span className="relative inline-block">
                             <svg
                                 viewBox="0 0 52 24"
@@ -34,13 +34,12 @@ function Blog() {
                                     height="24"
                                 />
                             </svg>
-                            <span className="relative">The</span>
+                            <span className="relative">Wellcome</span>
                         </span>{' '}
-                        quick, brown fox jumps over a lazy dog
+                        To The Most Exciting Blog Section
                     </h2>
-                    <p className="text-base text-gray-700 md:text-lg">
-                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                        accusantium doloremque rem aperiam, eaque ipsa quae.
+                    <p className="text-base dark:text-white text-gray-700 md:text-lg">
+                        Here are few important questions and aswers on firebase, authentication, and node.js
                     </p>
                 </div>
             </div>
@@ -49,83 +48,52 @@ function Blog() {
                     <div className="space-y-8">
                         <div>
                             <p className="mb-4 text-xl font-medium">
-                                The quick, brown fox jumps over a lazy dog?
+                                What is cors?
                             </p>
-                            <p className="text-gray-700">
-                                Space, the final frontier. These are the voyages of the Starship
-                                Enterprise. Its five-year mission: to explore strange new
-                                worlds.
-                                <br />
-                                <br />
-                                Many say exploration is part of our destiny, but it’s actually
-                                our duty to future generations.
+                            <p className="dark:text-white text-gray-700 text-justify">
+                                Cross-Origin Resource Sharing (CORS) is an HTTP-header based mechanism that allows a server to indicate any origins (domain, scheme, or port) other than its own from which a browser should permit loading resources. CORS also relies on a mechanism by which browsers make a "preflight" request to the server hosting the cross-origin resource, in order to check that the server will permit the actual request. In that preflight, the browser sends headers that indicate the HTTP method and headers that will be used in the actual request.
                             </p>
                         </div>
                         <div>
                             <p className="mb-4 text-xl font-medium">
-                                The first mate and his Skipper too will do?
+                                Why are you using firebase? What other options do you have to implement authentication?
                             </p>
-                            <p className="text-gray-700">
-                                Well, the way they make shows is, they make one show. That
-                                show's called a pilot.
+                            <p className="dark:text-white text-gray-700 text-justify">
+                                1. Firebase is very powerful tool for reliable authentication process. Both manual login and third party type (facebook , google ,github etc.) login is
+                                possible here without wasting much time and effort.
                                 <br />
-                                <br />
-                                Then they show that show to the people who make shows, and on
-                                the strength of that one show they decide if they're going to
-                                make more shows. Some pilots get picked and become television
-                                programs.Some don't, become nothing. She starred in one of the
-                                ones that became nothing.
+                                2. Top alternative of firebase authentication
+                                <ul>
+                                    <li>a) Auth0 </li>
+                                    <li>b) MongoDB </li>
+                                    <li>c) Passport </li>
+                                    <li>d) Okta </li>
+                                    <li>e) JSON Web Token </li>
+                                    <li>f) Keycloak</li>
+                                    <li>g) Amazon Cognito </li>
+                                </ul>
                             </p>
                         </div>
                         <div>
                             <p className="mb-4 text-xl font-medium">
-                                Is the Space Pope reptilian!?
+                                How does the private route work?
                             </p>
-                            <p className="text-gray-700">
-                                A flower in my garden, a mystery in my panties. Heart attack
-                                never stopped old Big Bear. I didn't even know we were calling
-                                him Big Bear.
+                            <p className="dark:text-white text-gray-700 text-justify">
+                                The react private route component renders child components (children) if the user is logged in. If not logged in the user is redirected to the /login page with the return url passed in the location state property.
+                                <br />
+                                The current logged in user (authUser) is retrieved from context provider state with a call to the useContext() hook. But context method is not a mandatory rather it could be used with different state management library or any approach to get the logged in status of the user.
                             </p>
                         </div>
                     </div>
                     <div className="space-y-8">
                         <div>
                             <p className="mb-4 text-xl font-medium">
-                                How much money you got on you?
+                                What is Node? How does Node work?
                             </p>
-                            <p className="text-gray-700">
-                                The first mate and his Skipper too will do their very best to
-                                make the others comfortable in their tropic island nest.
+                            <p className="dark:text-white text-gray-700 text-justify">
+                                Node is javascript run time. It has been written in C, C++, and JavaScript, and it is built on the open-source V8 JavaScript engine which also powers JS in browsers such as Google Chrome. As V8 supports new features in JavaScript, they are incorporated into Node.
                                 <br />
-                                <br />
-                                Michael Knight a young loner on a crusade to champion the cause
-                                of the innocent. The helpless. The powerless in a world of
-                                criminals who operate above the law. Here he comes Here comes
-                                Speed Racer. He's a demon on wheels.
-                            </p>
-                        </div>
-                        <div>
-                            <p className="mb-4 text-xl font-medium">
-                                Galaxies Orion's sword globular star cluster?
-                            </p>
-                            <p className="text-gray-700">
-                                A business big enough that it could be listed on the NASDAQ goes
-                                belly up. Disappears!
-                                <br />
-                                <br />
-                                It ceases to exist without me. No, you clearly don't know who
-                                you're talking to, so let me clue you in.
-                            </p>
-                        </div>
-                        <div>
-                            <p className="mb-4 text-xl font-medium">
-                                When has justice ever been as simple as a rule book?
-                            </p>
-                            <p className="text-gray-700">
-                                This is not about revenge. This is about justice. A lot of
-                                things can change in twelve years, Admiral. Well, that's
-                                certainly good to know. About four years. I got tired of hearing
-                                how young I looked.
+                                Node allows developers to write JavaScript code that runs directly in a computer process itself instead of in a browser. Node can, therefore, be used to write server-side applications with access to the operating system, file system, and everything else required to build fully-functional applications.
                             </p>
                         </div>
                     </div>
