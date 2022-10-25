@@ -10,11 +10,11 @@ function Destinations() {
 
     // const destinations = useLoaderData();
     useEffect(() => {
-        fetch(`http://localhost:5000/courses/${page}`).then(res => res.json()).then(data => setLocations(data)).catch(err => console.log(err));
+        fetch(`https://9-min-school.vercel.app/courses/${page}`).then(res => res.json()).then(data => setLocations(data)).catch(err => console.log(err));
     }, [page]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/courses`).then(res => res.json()).then(data => setAllCourse(data)).catch(err => console.log(err));
+        fetch(`https://9-min-school.vercel.app/courses`).then(res => res.json()).then(data => setAllCourse(data)).catch(err => console.log(err));
     }, []);
 
     const { pages, data, start, end } = locations;
@@ -41,7 +41,7 @@ function Destinations() {
     }
 
     return (
-        <div className={isMenuOpen ? 'pt-[250px]' : ''}>
+        <div className={isMenuOpen ? 'pt-[350px]' : ''}>
             <div className='lg:flex-row flex-col flex'>
                 <div className='flex flex-col justify-start items-center px-4 pt-2 min-h-screen'>
                     <p className='text-gray-400 pb-5 '>Showing courses {start} to {end - 1} out of {pages}</p>

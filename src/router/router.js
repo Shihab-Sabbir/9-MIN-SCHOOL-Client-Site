@@ -17,7 +17,7 @@ export const router = createBrowserRouter([
         path: '/', errorElement: <ErrorPage />, element: <Layout />, children: [
             {
                 path: '/', loader: async ({ params }) => {
-                    return fetch('http://localhost:5000/hotels/slider');
+                    return fetch('https://9-min-school.vercel.app/hotels/slider');
                 }, element: <Home />
             },
             { path: '/register', element: <Register /> },
@@ -28,12 +28,12 @@ export const router = createBrowserRouter([
             { path: '/blog', element: <Blog /> },
             {
                 path: '/courses/:id', loader: async ({ params }) => {
-                    return fetch(`http://localhost:5000/course/${params.id}`);
+                    return fetch(`https://9-min-school.vercel.app/course/${params.id}`);
                 }, element: <Hotel />
             },
             {
                 path: '/search/:name', loader: async ({ params }) => {
-                    return fetch(`http://localhost:5000/search/${params.name}`);
+                    return fetch(`https://9-min-school.vercel.app/search/${params.name}`);
                 }, element: <Search />
             },
         ]
