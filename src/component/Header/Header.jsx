@@ -1,10 +1,11 @@
 import { Avatar } from 'flowbite-react';
 import React, { useContext, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../UserContext/UserContext';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import logo from '../../asset/logo.png'
+import './Header.css'
 function Header({ setSearch, toggle }) {
     const { isMenuOpen, setIsMenuOpen } = toggle;
     const [location, setLocation] = useState('');
@@ -21,46 +22,41 @@ function Header({ setSearch, toggle }) {
         <div className={(window.location.pathname !== '/') ? 'bg-gray-900 z-[200] min-h-fit' : 'bg-gray-900 z-[200] min-h-fit absolute min-w-full bg-opacity-0'}>
             <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
                 <div className="relative flex items-center justify-between">
-                    <Link
+                    <NavLink
                         to="/"
-                        aria-label="Company"
-                        title="Company"
-                        className="inline-flex items-center"
+                        className={({ isActive }) =>
+                            isActive ? 'inline-flex items-center font-extrabold' : undefined
+                        }
                     >
                         <span className="ml-2 text-xl font-['Montserrat'] font-bold tracking-wide text-gray-100 uppercase">
                             <span className='text-3xl'>9</span> <span>m<span className='text-red-600'>i</span>n sch<span className='text-red-600'>oo</span>l</span>
                         </span>
-                    </Link>
+                    </NavLink>
                     <ul className="items-center hidden space-x-8 lg:flex">
                         <li>
-                            <Link
+                            <NavLink
+                                className={({ isActive }) => (isActive ? "active-class" : "non-active-class")}
                                 to="/payment"
-                                aria-label="Our product"
-                                title="Our product"
-                                className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                                end
                             >
                                 Payment
-                            </Link>
+                            </NavLink>
                         </li>
                         <li>
-                            <Link
+                            <NavLink
                                 to="/courses"
-                                aria-label="Our product"
-                                title="Our product"
-                                className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                                className={({ isActive }) => (isActive ? "active-class" : "non-active-class")}
                             >
                                 Couses
-                            </Link>
+                            </NavLink>
                         </li>
                         <li>
-                            <Link
+                            <NavLink
                                 to="/login"
-                                aria-label="Product pricing"
-                                title="Product pricing"
-                                className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                                className={({ isActive }) => (isActive ? "active-class" : "non-active-class")}
                             >
                                 {(!user?.uid) ? 'Log in' : 'Log out'}
-                            </Link>
+                            </NavLink>
                         </li>
                         <li>
                             <form className="relative min-w-[280px]" onSubmit={handleSearchInput}>
@@ -98,7 +94,7 @@ function Header({ setSearch, toggle }) {
                             </button>
                             <div className="inline-flex items-center mx-2 sm:mx-4 md:mx-8">
                             </div>
-                            {user?.uid && <Link
+                            {user?.uid && <NavLink
                                 to="/profile"
                                 aria-label="Company"
                                 title={user.displayName}
@@ -109,14 +105,14 @@ function Header({ setSearch, toggle }) {
                                     bordered={true}
 
                                 />
-                            </Link>}
+                            </NavLink>}
                         </div>
                         {isMenuOpen && (
                             <div className="absolute top-0 left-0 w-full">
                                 <div className="p-5 bg-white border rounded shadow-sm">
                                     <div className="flex items-center justify-between mb-4">
                                         <div>
-                                            <Link
+                                            <NavLink
                                                 to="/"
                                                 aria-label="World Tour"
                                                 title="World Tour"
@@ -140,7 +136,7 @@ function Header({ setSearch, toggle }) {
                                                 <span className="ml-2 text-xl font-mono font-bold tracking-wide text-gray-800 uppercase">
                                                     <span className='text-3xl'>9</span> <span>m<span className='text-red-600'>i</span>n sch<spna className='text-red-600'>oo</spna>l</span>
                                                 </span>
-                                            </Link>
+                                            </NavLink>
                                         </div>
                                         <div>
                                             <button
@@ -161,24 +157,24 @@ function Header({ setSearch, toggle }) {
                                     <nav>
                                         <ul className="space-y-4">
                                             <li onClick={() => setIsMenuOpen(false)}>
-                                                <Link
+                                                <NavLink
                                                     to="/payment"
                                                     aria-label="Our product"
                                                     title="Our product"
                                                     className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                                                 >
                                                     Payment
-                                                </Link>
+                                                </NavLink>
                                             </li>
                                             <li onClick={() => setIsMenuOpen(false)}>
-                                                <Link
+                                                <NavLink
                                                     to="/courses"
                                                     aria-label="Our product"
                                                     title="Our product"
                                                     className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                                                 >
                                                     Courses
-                                                </Link>
+                                                </NavLink>
                                             </li>
                                             <li>
                                                 <form className="relative" onSubmit={handleSearchInput}>
@@ -191,14 +187,14 @@ function Header({ setSearch, toggle }) {
                                                 </form>
                                             </li>
                                             <li onClick={() => setIsMenuOpen(false)}>
-                                                <Link
+                                                <NavLink
                                                     to="/login"
                                                     className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-black transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
                                                     aria-label="Sign up"
                                                     title="Sign up"
                                                 >
                                                     {!user?.uid ? 'Log-In' : 'Log out'}
-                                                </Link>
+                                                </NavLink>
                                             </li>
                                         </ul>
                                     </nav>
@@ -207,7 +203,7 @@ function Header({ setSearch, toggle }) {
                         )}
                     </div>
                     {user?.uid &&
-                        <Link
+                        <NavLink
                             to="/profile"
                             aria-label="Company"
                             title={user.displayName}
@@ -217,7 +213,7 @@ function Header({ setSearch, toggle }) {
                                 img={user?.photoURL}
                                 bordered={true}
                             />
-                        </Link>
+                        </NavLink>
                     }
                 </div>
             </div>
