@@ -52,6 +52,14 @@ function Header({ setSearch, toggle }) {
                         </li>
                         <li>
                             <NavLink
+                                to="/blog"
+                                className={({ isActive }) => (isActive ? "active-class" : "non-active-class")}
+                            >
+                                Blog
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
                                 to="/login"
                                 className={({ isActive }) => (isActive ? "active-class" : "non-active-class")}
                             >
@@ -159,9 +167,7 @@ function Header({ setSearch, toggle }) {
                                             <li onClick={() => setIsMenuOpen(false)}>
                                                 <NavLink
                                                     to="/payment"
-                                                    aria-label="Our product"
-                                                    title="Our product"
-                                                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                                                    className={({ isActive }) => (isActive ? "active-class" : "non-active-class-sm")}
                                                 >
                                                     Payment
                                                 </NavLink>
@@ -169,11 +175,17 @@ function Header({ setSearch, toggle }) {
                                             <li onClick={() => setIsMenuOpen(false)}>
                                                 <NavLink
                                                     to="/courses"
-                                                    aria-label="Our product"
-                                                    title="Our product"
-                                                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                                                    className={({ isActive }) => (isActive ? "active-class" : "non-active-class-sm")}
                                                 >
                                                     Courses
+                                                </NavLink>
+                                            </li>
+                                            <li onClick={() => setIsMenuOpen(false)}>
+                                                <NavLink
+                                                    to="/blog"
+                                                    className={({ isActive }) => (isActive ? "active-class" : "non-active-class-sm")}
+                                                >
+                                                    Blog
                                                 </NavLink>
                                             </li>
                                             <li>

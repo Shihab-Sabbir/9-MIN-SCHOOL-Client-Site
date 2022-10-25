@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import Blog from "../component/Blog/Blog";
 import Booking from "../component/Booking/Booking";
 import Destinations from "../component/Destinations/Destinations";
 import ErrorPage from "../component/ErrorPage/ErrorPage";
@@ -24,6 +25,7 @@ export const router = createBrowserRouter([
             { path: '/courses', element: <Destinations /> },
             { path: '/payment', element: <ProtectedRoute><Booking /></ProtectedRoute> },
             { path: '/profile', element: <Profile /> },
+            { path: '/blog', element: <Blog /> },
             {
                 path: '/courses/:id', loader: async ({ params }) => {
                     return fetch(`http://localhost:5000/course/${params.id}`);
