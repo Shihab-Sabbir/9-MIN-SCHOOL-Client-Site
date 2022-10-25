@@ -102,18 +102,14 @@ function Header({ setSearch, toggle }) {
                             </button>
                             <div className="inline-flex items-center mx-2 sm:mx-4 md:mx-8">
                             </div>
-                            {user?.uid && <NavLink
-                                to="/profile"
-                                aria-label="Company"
-                                title={user.displayName}
-
-                            >
-                                <Avatar
-                                    img={user?.photoURL}
-                                    bordered={true}
-
-                                />
-                            </NavLink>}
+                            {user?.uid && <div className="hidden sm:flex items-center p-2 space-x-4" title={user.displayName}>
+                                <img src={user?.photoURL} className="w-12 h-12 rounded-full dark:bg-gray-500" />
+                                <div>
+                                    <span className="flex items-center space-x-1">
+                                        <NavLink to='/profile' className="text-xs hover:underline dark:text-gray-400">View profile</NavLink>
+                                    </span>
+                                </div>
+                            </div>}
                         </div>
                         {isMenuOpen && (
                             <div className="absolute top-0 left-0 w-full">
@@ -188,6 +184,14 @@ function Header({ setSearch, toggle }) {
                                                     Blog
                                                 </NavLink>
                                             </li>
+                                            {user?.uid && <li onClick={() => setIsMenuOpen(false)} className='sm:hidden'>
+                                                <NavLink
+                                                    to="/profile"
+                                                    className={({ isActive }) => (isActive ? "active-class" : "non-active-class-sm")}
+                                                >
+                                                    User Profile
+                                                </NavLink>
+                                            </li>}
                                             <li>
                                                 <form className="relative" onSubmit={handleSearchInput}>
                                                     <input type="search" id="default-search"
@@ -215,17 +219,15 @@ function Header({ setSearch, toggle }) {
                         )}
                     </div>
                     {user?.uid &&
-                        <NavLink
-                            to="/profile"
-                            aria-label="Company"
-                            title={user.displayName}
-                            className="items-center hidden lg:inline-flex"
-                        >
-                            <Avatar
-                                img={user?.photoURL}
-                                bordered={true}
-                            />
-                        </NavLink>
+                        <div className="hidden lg:flex items-center space-x-4 pl-2 " title={user?.displayName}>
+                            <img src={user?.photoURL} className="w-12 h-12 rounded-full dark:bg-gray-500" />
+                            <div>
+                                <h2 className="hidden xl:block text-sm text-blue-600 font-semibold">{user?.email || 'No Email'}</h2>
+                                <span className="flex items-center space-x-1">
+                                    <NavLink to='/profile' className="text-xs hover:underline text-blue-600 dark:text-gray-400">View profile</NavLink>
+                                </span>
+                            </div>
+                        </div>
                     }
                 </div>
             </div>
