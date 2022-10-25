@@ -14,34 +14,34 @@ function Booking() {
 
     const navigate = useNavigate();
     return (
-        <div className={isMenuOpen ? 'pt-[250px] bg-blue-300' : 'bg-slate-300'}>
+        <div className={isMenuOpen ? 'pt-[250px] dark:bg-slate-500 bg-slate-200' : 'dark:bg-slate-500 bg-slate-200'}>
             {(product?.cost || localData?.cost) ?
                 <div className="relative px-4 pt-16 mx-auto lg:py-32 md:px-8 xl:px-20 sm:max-w-xl md:max-w-full min-h-screen flex lg:flex-row flex-col">
                     <div className="max-w-xl mx-auto lg:max-w-screen-xl">
                         <div className="mb-16 lg:max-w-lg lg:mb-0">
                             <div className="max-w-xl mb-6">
                                 <div>
-                                    <p className="inline-block py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
+                                    <p className="inline-block py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 dark:text-teal-200 uppercase rounded-full bg-teal-accent-400">
                                         Premium course of 9 min school
                                     </p>
                                 </div>
-                                <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
+                                <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-300 sm:text-4xl sm:leading-none">
                                     {product?.name || localData?.name}
                                 </h2>
-                                <p className="text-base text-gray-700 md:text-lg">
+                                <p className="text-base text-gray-700 dark:text-gray-300 md:text-lg">
                                     {product.details || localData?.details}
                                 </p>
                             </div>
                         </div>
                     </div>
                     <div className="flex justify-center h-full p-3 overflow-hidden lg:w-2/3 xl:w-1/2 lg:items-end lg:pb-3 pb-10">
-                        <div className="h-auto w-80 bg-white p-3 rounded-lg shadow-2xl">
-                            <p className="text-xl font-semibold">Payment Details</p>
-                            <div className="input_text mt-6 relative"> <input type="text" className="h-12 pl-7 outline-none px-2 focus:border-blue-900 transition-all w-full border-b " placeholder={user?.displayName} /> <span className="absolute left-0 text-sm -top-5">Cardholder Name</span> <i className="absolute left-2 top-4 text-gray-400 fa fa-user"></i> </div>
-                            <div className="input_text mt-8 relative"> <input type="text" className="h-12 pl-7 outline-none px-2 focus:border-blue-900 transition-all w-full border-b " placeholder="0000 0000 0000 0000" data-slots="0" data-accept="\d" size="19" /> <span className="absolute left-0 text-sm -top-5">Card Number</span> <i className="absolute left-2 top-[14px] text-gray-400 text-sm fa fa-credit-card"></i> </div>
+                        <div className="h-auto w-80 bg-white dark:bg-slate-300 p-3 rounded-lg shadow-2xl">
+                            <p className="text-xl dark:text-black font-semibold">Payment Details</p>
+                            <div className="input_text mt-6 relative"> <input type="text" className="bg-white dark:bg-gray-200 h-12 pl-7 outline-none px-2 focus:border-blue-900 transition-all w-full border-b " placeholder={user?.displayName} /> <span className="absolute left-0 text-sm -top-5 dark:text-black">Cardholder Name</span> <i className="absolute left-2 top-4 text-gray-400 fa fa-user"></i> </div>
+                            <div className="input_text mt-8 relative"> <input type="text" className="bg-white dark:bg-gray-200 h-12 pl-7 outline-none px-2 focus:border-blue-900 transition-all w-full border-b " placeholder="0000 0000 0000 0000" data-slots="0" data-accept="\d" size="19" /> <span className="absolute left-0 text-sm -top-5 dark:text-black">Card Number</span> <i className="absolute left-2 top-[14px] text-gray-400 text-sm fa fa-credit-card"></i> </div>
                             <div className="mt-8 flex gap-5 ">
-                                <div className="input_text relative w-full"> <input type="text" className="h-12 pl-7 outline-none px-2 focus:border-blue-900 transition-all w-full border-b " placeholder="mm/yyyy" data-slots="my" /> <span className="absolute left-0 text-sm -top-5">Expiry</span> <i className="absolute left-2 top-4 text-gray-400 fa fa-calendar-o"></i> </div>
-                                <div className="input_text relative w-full"> <input type="text" className="h-12 pl-7 outline-none px-2 focus:border-blue-900 transition-all w-full border-b " placeholder="000" data-slots="0" data-accept="\d" size="3" /> <span className="absolute left-0 text-sm -top-5">CVV</span> <i className="absolute left-2 top-4 text-gray-400 fa fa-lock"></i> </div>
+                                <div className="input_text relative w-full"> <input type="text" className="bg-white dark:bg-gray-200 h-12 pl-7 outline-none px-2 focus:border-blue-900 transition-all w-full border-b " placeholder="mm/yyyy" data-slots="my" /> <span className="absolute left-0 text-sm -top-5 dark:text-black">Expiry</span> <i className="absolute left-2 top-4 text-gray-400 fa fa-calendar-o"></i> </div>
+                                <div className="input_text relative w-full"> <input type="text" className="bg-white dark:bg-gray-200 h-12 pl-7 outline-none px-2 focus:border-blue-900 transition-all w-full border-b " placeholder="000" data-slots="0" data-accept="\d" size="3" /> <span className="absolute left-0 text-sm -top-5 dark:text-black">CVV</span> <i className="absolute left-2 top-4 text-gray-400 fa fa-lock"></i> </div>
                             </div>
                             <p className="text-lg text-center mt-4 text-gray-600 font-semibold">Payment amount:${product.cost || localData?.cost || 0}</p>
                             <div className="flex justify-center mt-4"> <button type="button" className="text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#F7BE38]/50 mr-2 mb-2">

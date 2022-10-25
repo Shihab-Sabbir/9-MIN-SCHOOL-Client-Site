@@ -37,16 +37,16 @@ function Profile() {
                                 <h5 className="mb-4 text-4xl font-extrabold leading-none">
                                     {user?.displayName}
                                 </h5>
-                                <p className="mb-2 text-gray-900">
+                                <p className="mb-2 text-gray-900 dark:text-slate-200">
                                     {user?.email || 'Email Address not Given'}
                                 </p>
-                                <p className="mb-2 text-gray-900">
+                                <p className="mb-2 text-gray-900 dark:text-slate-200">
                                     {user?.providerData?.phoneNumber || 'Phone Number not Given'}
                                 </p>
-                                <p className="mb-2 text-gray-900">
+                                <p className="mb-2 text-gray-900 dark:text-slate-200">
                                     Registered at {user?.metadata?.creationTime}
                                 </p>
-                                <p className="mb-6 text-gray-900">
+                                <p className="mb-6 text-gray-900 dark:text-slate-200">
                                     Last Login at {user?.metadata?.lastSignInTime}
                                 </p>
                                 <hr className="mb-5 border-gray-300" />

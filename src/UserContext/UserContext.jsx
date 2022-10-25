@@ -25,6 +25,12 @@ function UserContext({ children }) {
         }
     }, [])
 
+    useEffect(() => {
+        if (sessionStorage.getItem(`9minschool-theme`) !== null) {
+            setDark(JSON.parse(sessionStorage.getItem(`9minschool-theme`)));
+        }
+    }, [])
+
     return (
         <AuthContext.Provider value={{ user, setUser, loading, setLoading, isOnline, product, setProduct, dark, setDark }}>
             {children}

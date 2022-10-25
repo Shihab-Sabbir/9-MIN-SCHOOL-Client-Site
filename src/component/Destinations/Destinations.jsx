@@ -67,7 +67,7 @@ function Destinations() {
                 </div>
                 <div>
                     <div className="w-full lg:h-fit p-2">
-                        <p className='text-center uppercase text-sm font-bold'>all courses at a glance</p>
+                        <p className='text-center uppercase text-sm font-bold pb-4'>all courses at a glance</p>
                         <Sidebar aria-label="Sidebar with multi-level dropdown example">
                             <Sidebar.Items>
                                 <ul>

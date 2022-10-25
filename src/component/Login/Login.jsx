@@ -68,7 +68,7 @@ function Login() {
     return (
         <div className={isMenuOpen ? 'p-8 lg:w-1/2 mx-auto pt-[270px] min-h-screen' : 'p-8 lg:w-1/2 mx-auto min-h-screen'}>
             {!user?.uid && <>
-                <div className="bg-white rounded-t-lg p-8">
+                <div className="bg-white dark:bg-slate-400 rounded-t-lg p-8">
                     <p className="text-center text-sm text-gray-400 font-light">Sign in with</p>
                     <div>
                         <div className=" flex items-center justify-center space-x-4 mt-3">
@@ -89,12 +89,12 @@ function Login() {
                         </div>
                     </div>
                 </div>
-                <div className="bg-gray-100 rounded-b-lg py-12 px-4 lg:px-24">
+                <div className="bg-gray-100 dark:bg-slate-300 rounded-b-lg py-12 px-4 lg:px-24">
                     <p className="text-center text-sm text-gray-500 font-light">        Or sign in with credentials
                     </p>
                     <form className="mt-6" onSubmit={handleSubmit}>
                         <div className="relative">
-                            <input required ref={userEmail} className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline" id="email" name='email' type="email" placeholder="Email" />
+                            <input required ref={userEmail} className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none dark:bg-slate-100 focus:ring-gray-600 focus:shadow-outline" id="email" name='email' type="email" placeholder="Email" />
                             <div className="absolute left-0 inset-y-0 flex items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 ml-3 text-gray-400 p-1" viewBox="0 0 20 20" fill="currentColor"            >
                                     <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
@@ -103,7 +103,8 @@ function Login() {
                             </div>
                         </div>
                         <div className="relative mt-3">
-                            <input required className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline" id="password" name='password' type="password" placeholder="Password" />
+                            <input required className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none
+                            dark:bg-slate-100  focus:ring-gray-600 focus:shadow-outline" id="password" name='password' type="password" placeholder="Password" />
                             <div className="absolute left-0 inset-y-0 flex items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 ml-3 text-gray-400 p-1" viewBox="0 0 20 20" fill="currentColor">
                                     <path d="M10 2a5 5 0 00-5 5v2a2 2 0 00-2 2v5a2 2 0 002 2h10a2 2 0 002-2v-5a2 2 0 00-2-2H7V7a3 3 0 015.905-.75 1 1 0 001.937-.5A5.002 5.002 0 0010 2z" />
