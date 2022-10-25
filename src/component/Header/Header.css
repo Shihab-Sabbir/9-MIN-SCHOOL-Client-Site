@@ -1,8 +1,5 @@
 .active-class{
     font-weight: bolder;
-    border: 1px solid red;
-    padding: 5px;
-    border-radius: 5px;
     color: red;
 }
 .non-active-class{

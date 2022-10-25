@@ -66,9 +66,10 @@ function Destinations() {
                     </div>
                 </div>
                 <div>
-                    <div className="w-full lg:h-fit p-2">
+                    <div className="w-full lg:h-fit p-2 pr-4 flex justify-center flex-col items-center">
                         <p className='text-center uppercase text-sm font-bold pb-4'>all courses at a glance</p>
-                        <Sidebar aria-label="Sidebar with multi-level dropdown example">
+                        <Sidebar aria-label="Sidebar with multi-level dropdown example"
+                        >
                             <Sidebar.Items>
                                 <ul>
                                     {

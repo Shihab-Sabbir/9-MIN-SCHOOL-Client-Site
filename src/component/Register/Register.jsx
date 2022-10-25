@@ -59,7 +59,8 @@ function Register() {
     }
     return (
         <div className={isMenuOpen ? 'p-8 lg:w-1/2 mx-auto pt-[300px]' : 'p-8 lg:w-1/2 mx-auto'}>
-            <div className="dark:bg-gray-300 bg-gray-100  rounded-b-lg py-12 px-4 lg:px-24">
+            <div className="dark:bg-gray-300 bg-gray-100  rounded-b-lg py-12 px-4 lg:px-24 rounded-lg">
+                <p className="text-center text-sm text-gray-900 font-light">Registation Form</p>
                 <form className="mt-6" onSubmit={handleSubmit}>
                     <div className="relative">
                         <input required className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md dark:bg-gray-100 focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline" id="username" type="text" name='name' placeholder="Name" />
