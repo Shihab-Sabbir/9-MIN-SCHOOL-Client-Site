@@ -35,7 +35,21 @@ function Header({ setSearch, toggle }) {
                         className={({ isActive }) =>
                             isActive ? 'inline-flex items-center font-extrabold' : undefined
                         }
+                    ><svg
+                        className="w-8 text-deep-purple-accent-400"
+                        viewBox="0 0 24 24"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeMiterlimit="10"
+                        stroke="red"
+                        fill="none"
                     >
+                            <rect x="3" y="1" width="7" height="12" />
+                            <rect x="3" y="17" width="7" height="6" />
+                            <rect x="14" y="1" width="7" height="6" />
+                            <rect x="14" y="11" width="7" height="12" />
+                        </svg>
                         <span className="ml-2 text-xl font-['Montserrat'] font-bold tracking-wide text-gray-100 uppercase">
                             <span className='text-3xl'>9</span> <span>m<span className='text-red-600'>i</span>n sch<span className='text-red-600'>oo</span>l</span>
                         </span>
@@ -123,7 +137,7 @@ function Header({ setSearch, toggle }) {
                             </NavLink>
                         </li>
                         <li>
-                            <form className='rounded-lg lg:min-w-[280px]' onSubmit={handleSearchInput}>
+                            <form className='rounded-lg lg:min-w-[200px] xl:min-w-[280px]' onSubmit={handleSearchInput}>
                                 <div className="flex rounded-lg">
                                     <label htmlFor="search-dropdown" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300">Your Email</label>
                                     <div className="relative w-full">

@@ -2,8 +2,9 @@ import React, { Component, useEffect, useRef, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Link, useLoaderData, useOutletContext } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 import { BsFillArrowRightCircleFill, BsFillArrowLeftCircleFill } from 'react-icons/bs';
+import replacement from '../../asset/replacement.png'
 function Popular() {
   const [currentData, setCurrentData] = useState({});
   const [data, setdata] = useState([]);
@@ -14,6 +15,10 @@ function Popular() {
   }, []);
 
   const { isMenuOpen } = useOutletContext();
+  const errImg = useRef();
+  const replaceImage = () => {
+    errImg.current.src = replacement;
+  }
   const settings = {
     className: "center",
     centerMode: true,
@@ -83,7 +88,7 @@ function Popular() {
             className='border-2 dark:bg-white rounded-lg p-1'>
             {
               data?.map(item =>
-                <img key={item.id} src={item.image} />
+                <img key={item.id} ref={errImg} src={item.image} onError={() => { replaceImage() }} onLoad={replaceImage} />
               )
             }
           </Slider>
