@@ -1,6 +1,6 @@
 import { Pagination, Sidebar } from 'flowbite-react';
 import React, { useEffect, useRef, useState } from 'react'
-import { Link, useLoaderData, useOutletContext } from 'react-router-dom';
+import { Link, useOutletContext } from 'react-router-dom';
 import Destination from './Course';
 import { FiMonitor } from 'react-icons/fi'
 import toast from 'react-hot-toast';
@@ -20,7 +20,7 @@ function Courses() {
     }, []);
 
     const { pages, data, start, end } = locations;
-    const pageNumber = Math.ceil(pages / 4);
+    const pageNumber = Math.ceil(pages / 6);
     const { isMenuOpen } = useOutletContext();
     const pagination = useRef();
     function handleClick(event) {
@@ -81,7 +81,7 @@ function Courses() {
                                             key={course.id}
                                             className='flex items-center '
                                         >   <FiMonitor className='text-sm pr-2' />
-                                            <Link to={`../courses/${course.id}`} className='text-xs hover:bg-slate-200 p-1 w-full rounded-md'>{course.name.length > 30 ? course.name.slice(0, 30) + '...' : course.name}</Link>
+                                            <Link to={`../course/${course.id}`} className='text-xs hover:bg-slate-200 p-1 w-full rounded-md'>{course.name.length > 30 ? course.name.slice(0, 30) + '...' : course.name}</Link>
                                         </p>)
                                 }
 

@@ -8,12 +8,12 @@ import logo from '../../asset/logo.png'
 import replacement from '../../asset/replacement.png'
 function CourseDetails() {
     const data = useLoaderData();
+    console.log(data.id)
     const { name, image, cost, details } = data;
     const { user } = useContext(AuthContext);
     const { isMenuOpen } = useOutletContext();
     const navigate = useNavigate();
     const doc = new jsPDF('p', 'px', 'letter');
-    const input = useRef()
     const { setProduct } = useContext(AuthContext);
     function handleOnclick() {
         if (user?.uid) {
@@ -21,7 +21,6 @@ function CourseDetails() {
         }
         setProduct(data);
         navigate('/payment');
-        console.log('clicked')
     }
     const errImg = useRef();
     const replaceImage = () => {
@@ -41,9 +40,9 @@ function CourseDetails() {
     }
     return (
         <div className={isMenuOpen ? 'pt-[400px] mb-3 px-3 min-h-screen' : 'mb-3 p-3 min-h-screen'}>
-            {data && <div className="min-h-screen bg-base-200 lg:max-w-[1100px] mx-auto p-2" ref={input}>
+            {data.id && <div className="min-h-screen bg-base-200 lg:max-w-[1100px] mx-auto p-2" >
                 <div className="flex flex-col md:flex-row" >
-                    <img src={image} ref={errImg} onError={() => { replaceImage() }} onLoad={replaceImage} className="max-w-full bg-white md:min-w-[50%] shadow md:max-h-[500px]" />
+                    <img src={image} ref={errImg} onError={() => { replaceImage() }} className="max-w-full bg-white md:min-w-[50%] shadow md:max-h-[500px]" />
                     <div className='flex flex-col justify-between items-start min-w-full md:min-w-[50%] px-3 pb-1 md:pt-0 pt-5 md:max-h-[500px]'>
                         <div className='w-full'>
                             <div className='flex justify-between gap-2 md:gap-3 lg:gap-4 xl:gap-6'>
@@ -66,10 +65,20 @@ function CourseDetails() {
                     </div>
                 </div>
             </div>}
-            {data || <>
-                <p className="text-3xl">Sorry No Course Found , Please try again</p>
-                <Link rel="noopener noreferrer" to='/' className="px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900">Back to homepage</Link>
-            </>}
+            {data.id ||
+                <section className="flex items-center h-full sm:p-16 dark:bg-gray-900 dark:text-gray-100">
+                    <div className="container flex flex-col items-center justify-center px-5 mx-auto my-8 space-y-8 text-center sm:max-w-md">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-40 h-40 dark:text-gray-600">
+                            <path fill="currentColor" d="M256,16C123.452,16,16,123.452,16,256S123.452,496,256,496,496,388.548,496,256,388.548,16,256,16ZM403.078,403.078a207.253,207.253,0,1,1,44.589-66.125A207.332,207.332,0,0,1,403.078,403.078Z"></path>
+                            <rect width="176" height="32" x="168" y="320" fill="currentColor"></rect>
+                            <polygon fill="currentColor" points="210.63 228.042 186.588 206.671 207.958 182.63 184.042 161.37 162.671 185.412 138.63 164.042 117.37 187.958 141.412 209.329 120.042 233.37 143.958 254.63 165.329 230.588 189.37 251.958 210.63 228.042"></polygon>
+                            <polygon fill="currentColor" points="383.958 182.63 360.042 161.37 338.671 185.412 314.63 164.042 293.37 187.958 317.412 209.329 296.042 233.37 319.958 254.63 341.329 230.588 365.37 251.958 386.63 228.042 362.588 206.671 383.958 182.63"></polygon>
+                        </svg>
+                        <p className="text-3xl">Sorry No Course Found , Please try again</p>
+                        <Link rel="noopener noreferrer" to='/' className="px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900">Back to homepage</Link>
+                    </div>
+                </section>
+            }
         </div>
     )
 }

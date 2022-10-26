@@ -5,7 +5,6 @@ import Booking from "../component/Payment/Payment";
 import Destinations from "../component/Courses/Courses";
 import ErrorPage from "../component/ErrorPage/ErrorPage";
 import Home from "../component/Home/Home";
-import Hotel from "../component/CourseDetails/CourseDetails";
 import Layout from "../component/Layout/Layout";
 import Login from "../component/Login/Login";
 import Popular from "../component/Popular/Popular";
@@ -13,6 +12,7 @@ import Profile from "../component/Profile/Profile";
 import Register from "../component/Register/Register";
 import Search from "../component/Search/Search";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import CourseDetails from "../component/CourseDetails/CourseDetails";
 
 export const router = createBrowserRouter([
     {
@@ -27,9 +27,9 @@ export const router = createBrowserRouter([
             { path: '/about', element: <AboutUs /> },
             { path: '/popular', element: <Popular /> },
             {
-                path: '/courses/:id', loader: async ({ params }) => {
+                path: '/course/:id', loader: async ({ params }) => {
                     return fetch(`https://9-min-school.vercel.app/course/${params.id}`);
-                }, element: <Hotel />
+                }, element: <CourseDetails />
             },
             {
                 path: '/search/:name', loader: async ({ params }) => {

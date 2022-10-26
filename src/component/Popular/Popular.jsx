@@ -75,7 +75,7 @@ function Popular() {
         <div className="flex flex-col justify-center items-center p-4 lg:min-w-[20%] min-h-fit">
           <p className="uppercase font-bold text-xs py-1 h-[50px]">{currentData?.name}</p>
           <p className="uppercase font-bold text-xs py-1">${currentData?.cost}</p>
-          <Link to={`../courses/${currentData?.id}`} className="p-2 mt-3 dark:hover:bg-blue-200 dark:hover:text-white bg-slate-800 rounded-md hover:bg-slate-200 hover:text-black text-xs uppercase shadow-lg font-bold text-white dark:bg-slate-200 dark:text-black">
+          <Link to={`../course/${currentData?.id}`} className="p-2 mt-3 dark:hover:bg-blue-200 dark:hover:text-white bg-slate-800 rounded-md hover:bg-slate-200 hover:text-black text-xs uppercase shadow-lg font-bold text-white dark:bg-slate-200 dark:text-black">
             Details
           </Link>
         </div>
