@@ -57,7 +57,7 @@ function Header({ setSearch, toggle }) {
                                 Popular
                             </NavLink>
                         </li>
-                        <li className='xl:hidden font-mono text-white z-50'>
+                        <li className='xl:hidden font-mono hover:text-red-500 text-white z-50'>
                             <Dropdown
                                 label="More"
                                 inline={true}
@@ -65,14 +65,14 @@ function Header({ setSearch, toggle }) {
                                 <Dropdown.Item>
                                     <NavLink
                                         to="/blog"
-                                        className={({ isActive }) => (isActive ? "active-class" : "non-active-class")}
+                                        className={({ isActive }) => (isActive ? "active-class" : "non-active-class non-active-class-drop-down")}
                                     >
                                         Blog
                                     </NavLink>
                                 </Dropdown.Item>
                                 <Dropdown.Item>
                                     <NavLink
-                                        className={({ isActive }) => (isActive ? "active-class" : "non-active-class")}
+                                        className={({ isActive }) => (isActive ? "active-class" : "non-active-class non-active-class-drop-down")}
                                         to="/payment"
                                         end
                                     >
@@ -82,7 +82,7 @@ function Header({ setSearch, toggle }) {
                                 <Dropdown.Item>
                                     <NavLink
                                         to="/about"
-                                        className={({ isActive }) => (isActive ? "active-class" : "non-active-class")}
+                                        className={({ isActive }) => (isActive ? "active-class" : "non-active-class non-active-class-drop-down")}
                                     >
                                         About us
                                     </NavLink>

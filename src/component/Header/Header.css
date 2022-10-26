@@ -6,6 +6,15 @@
     font-weight: normal;
     color: white;
 }
+.dark .non-active-class-drop-down {
+    font-weight: normal;
+    color: white;
+}
+
+.non-active-class-drop-down {
+    font-weight: normal;
+    color: black;
+}
 .non-active-class-sm{
     font-weight: normal;
     color: black;
