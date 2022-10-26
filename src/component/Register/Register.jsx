@@ -93,12 +93,10 @@ function Register() {
                             </svg>
                         </div>
                     </div>
-                    <p className="mt-4 italic text-gray-500 font-light text-xs">Password strength: <span className="font-bold text-green-400">strong</span>
-                    </p>
+
                     <div className="mt-4 flex items-center text-gray-500"  >
                         <input type="checkbox" id="remember" name="remember" className="mr-2" readOnly checked={terms} onClick={() => setTerms(!terms)} />
-                        <label ref={warning} className="text-sm" htmlFor="remember">I agree with the
-                            <span className="text-indigo-400 hover:text-indigo-500"> Privacy Policy</span>
+                        <label ref={warning} className="text-sm pl-1" htmlFor="remember"> I agree with the "Privacy Policy"
                         </label>
                     </div>
                     <div className="mt-4 flex items-center text-gray-500">

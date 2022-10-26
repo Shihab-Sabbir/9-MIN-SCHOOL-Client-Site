@@ -23,14 +23,14 @@ function CourseDetails() {
         navigate('/payment');
     }
     const errImg = useRef();
-    const replaceImage = () => {
+    function replaceImage() {
         errImg.current.src = replacement;
     }
     function handleDownload() {
         doc.setFontSize(12);
         doc.setLineHeightFactor(1.5)
         doc.addImage(logo, 'PNG', 180, 20, 100, 40);
-        doc.addImage(replacement, 'PNG', 100, 90, 250, 200);
+        doc.addImage(image, 'PNG', 100, 90, 250, 200);
         doc.text(name, 20, 320);
         doc.text(`Course Details : ${details}`, 20, 350, { maxWidth: 420 });
         doc.text(`Price : $${cost}`, 20, 420);
@@ -42,7 +42,7 @@ function CourseDetails() {
         <div className={isMenuOpen ? 'pt-[400px] mb-3 px-3 min-h-screen' : 'mb-3 p-3 min-h-screen'}>
             {data.id && <div className="min-h-screen bg-base-200 lg:max-w-[1100px] mx-auto p-2" >
                 <div className="flex flex-col md:flex-row" >
-                    <img src={image} ref={errImg} onError={() => { replaceImage() }} className="max-w-full bg-white md:min-w-[50%] shadow md:max-h-[500px]" />
+                    <img src={image} ref={errImg} onError={() => replaceImage} className="max-w-full bg-white md:min-w-[50%] shadow md:max-h-[500px]" />
                     <div className='flex flex-col justify-between items-start min-w-full md:min-w-[50%] px-3 pb-1 md:pt-0 pt-5 md:max-h-[500px]'>
                         <div className='w-full'>
                             <div className='flex justify-between gap-2 md:gap-3 lg:gap-4 xl:gap-6'>
