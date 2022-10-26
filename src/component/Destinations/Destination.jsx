@@ -4,7 +4,7 @@ import loadingImg from '../../asset/loading.gif'
 import replacement from '../../asset/replacement.png'
 import { AuthContext } from '../../UserContext/UserContext';
 function Destination({ course }) {
-    const { title, image, name, address, id } = course;
+    const { image, name, id } = course;
     const { isOnline } = useContext(AuthContext);
     const errImg = useRef();
     const replaceImage = () => {
@@ -15,7 +15,7 @@ function Destination({ course }) {
             <a>
                 {
                     isOnline ?
-                        <img className="rounded-t-lg" src={image} ref={errImg} onError={() => { replaceImage() }} />
+                        <img className="rounded-t-lg dark:bg-white" src={image} ref={errImg} onError={() => { replaceImage() }} />
                         :
                         <img className="rounded-t-lg" src={loadingImg} alt="" />
                 }

@@ -37,7 +37,7 @@ function Hotel() {
         doc.save(`${name}.pdf`);
     }
     return (
-        <div className={isMenuOpen ? 'pt-[270px] mb-3 px-3 min-h-screen' : 'mb-3 p-3 min-h-screen'}>
+        <div className={isMenuOpen ? 'pt-[400px] mb-3 px-3 min-h-screen' : 'mb-3 p-3 min-h-screen'}>
             <div className="min-h-screen bg-base-200 lg:max-w-[1100px] mx-auto" ref={input}>
                 <div className="flex flex-col md:flex-row" >
                     <img src={image} ref={errImg} onError={() => { replaceImage() }} className="max-w-full md:min-w-[50%] shadow md:max-h-[500px]" />
@@ -58,7 +58,7 @@ function Hotel() {
                         <p className="py-6"><span className='font-bold text-sm'>Course Price : </span><span className='text-lg'>$</span>{cost}</p>
                         <div className='w-full flex items-center justify-between'>
                             <button className="p-2 bg-lime-500 shadow-md rounded-md border hover:border-lime-600 hover:bg-white hover:text-lime-600 text-xs uppercase font-bold text-white" onClick={handleOnclick}>Get premium access</button>
-                            <button className="p-2 bg-slate-800 rounded-md hover:bg-slate-200 hover:text-black text-xs uppercase shadow-lg font-bold text-white " onClick={() => navigate('/courses')}>Back</button>
+                            <button className="p-2 bg-slate-800 rounded-md hover:bg-slate-200 hover:text-black text-xs uppercase shadow-lg font-bold text-white " onClick={() => navigate(-1)}>Back</button>
                         </div>
                     </div>
                 </div>

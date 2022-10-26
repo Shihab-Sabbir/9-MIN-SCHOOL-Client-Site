@@ -2,22 +2,40 @@ import React from 'react'
 
 import { MapContainer, TileLayer, useMap } from 'react-leaflet'
 import { Marker, Popup } from 'react-leaflet'
+import { useOutletContext } from 'react-router-dom';
 
 function AboutUs() {
+    const { isMenuOpen } = useOutletContext();
     return (
-        <div>
+        <div className={isMenuOpen ? 'pt-[350px]' : ''}>
             <div className='py-5'>
-                <p className="ml-2 text-3xl font-['Montserrat'] font-bold tracking-wide text-gray-100 uppercase text-center">
-                    <span className='text-5xl text-black dark:text-white'>9</span> <span className='text-black dark:text-white'>m<span className='text-red-600'>i</span>n sch<span className='text-red-600'>oo</span>l</span>
-                </p>
+                <span className='flex justify-center items-center gap-2 md:gap-4'><svg
+                    className="w-8 text-deep-purple-accent-400 pt-1"
+                    viewBox="0 0 24 24"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeMiterlimit="10"
+                    stroke="currentColor"
+                    fill="none"
+                >
+                    <rect x="3" y="1" width="7" height="12" />
+                    <rect x="3" y="17" width="7" height="6" />
+                    <rect x="14" y="1" width="7" height="6" />
+                    <rect x="14" y="11" width="7" height="12" />
+                </svg>
+                    <p className="text-3xl font-['Montserrat'] font-bold tracking-wide text-gray-100 uppercase text-center">
+                        <span className='text-5xl text-black dark:text-white'>9</span> <span className='text-black dark:text-white'>m<span className='text-red-600'>i</span>n sch<span className='text-red-600'>oo</span>l</span>
+                    </p>
+                </span>
                 <p className='text-center uppercase text-black dark:text-white font-bold py-3 font-mono'>We share knowledge with the world</p>
             </div>
             <div className='flex flex-col justify-center items-center'>
                 <div className="px-4 py-2 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-10 text-black dark:text-white">
-                    <div className="grid gap-10 row-gap-8 grid-cols-3">
+                    <div className="grid gap-4 md:gap-6 lg:gap-10 row-gap-8 grid-cols-3">
                         <div>
                             <div className="flex">
-                                <h6 className="mr-2 text-4xl font-bold md:text-5xl text-deep-purple-accent-400">
+                                <h6 className="mr-2 text-2xl  font-bold md:text-5xl text-deep-purple-accent-400">
                                     86K
                                 </h6>
                                 <div className="flex items-center justify-center rounded-full bg-teal-accent-400 w-7 h-7">
@@ -41,7 +59,7 @@ function AboutUs() {
                         </div>
                         <div>
                             <div className="flex">
-                                <h6 className="mr-2 text-4xl font-bold md:text-5xl text-deep-purple-accent-400">
+                                <h6 className="mr-2 text-2xl  font-bold md:text-5xl text-deep-purple-accent-400">
                                     1.3K
                                 </h6>
                                 <div className="flex items-center justify-center rounded-full bg-teal-accent-400 w-7 h-7">
@@ -65,7 +83,7 @@ function AboutUs() {
                         </div>
                         <div>
                             <div className="flex">
-                                <h6 className="mr-2 text-4xl font-bold md:text-5xl text-deep-purple-accent-400">
+                                <h6 className="mr-2 text-2xl  font-bold md:text-5xl text-deep-purple-accent-400">
                                     52M
                                 </h6>
                                 <div className="flex items-center justify-center rounded-full bg-teal-accent-400 w-7 h-7">
@@ -93,7 +111,7 @@ function AboutUs() {
                 <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 text-black dark:text-white">
                     <div className="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
                         <div>
-                            <p className="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400 dark:text-slate-200">
+                            <p className="inline-block py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400 dark:text-slate-200">
                                 Dream Team
                             </p>
                         </div>
@@ -126,7 +144,7 @@ function AboutUs() {
                             our talented team of professionals
                         </h2>
                         <p className="text-base text-gray-700 dark:text-slate-200 md:text-lg">
-                            Here are some of the most popular course supervisor in our core team.
+                            Here are some of the most popular course supervisors and  core team members.
                         </p>
                     </div>
                     <div className="grid gap-10 row-gap-8 mx-auto sm:row-gap-10 lg:max-w-screen-lg sm:grid-cols-2 lg:grid-cols-3">
@@ -138,7 +156,7 @@ function AboutUs() {
                             />
                             <div className="flex flex-col justify-center">
                                 <p className="text-lg font-bold">Oliver Aguilerra</p>
-                                <p className="text-sm text-gray-800">Product Manager</p>
+                                <p className="text-sm dark:text-slate-200 text-gray-800 ">Product Manager</p>
                             </div>
                         </div>
                         <div className="flex">
@@ -149,7 +167,7 @@ function AboutUs() {
                             />
                             <div className="flex flex-col justify-center">
                                 <p className="text-lg font-bold">Marta Clermont</p>
-                                <p className="text-sm text-gray-800">Design Team Lead</p>
+                                <p className="text-sm dark:text-slate-200 text-gray-800">Design Team Lead</p>
                             </div>
                         </div>
                         <div className="flex">
@@ -160,7 +178,7 @@ function AboutUs() {
                             />
                             <div className="flex flex-col justify-center">
                                 <p className="text-lg font-bold">Anthony Geek</p>
-                                <p className="text-sm text-gray-800">CTO, Lorem Inc.</p>
+                                <p className="text-sm dark:text-slate-200 text-gray-800">CTO, Lorem Inc.</p>
                             </div>
                         </div>
                         <div className="flex">
@@ -171,7 +189,7 @@ function AboutUs() {
                             />
                             <div className="flex flex-col justify-center">
                                 <p className="text-lg font-bold">Alice Melbourne</p>
-                                <p className="text-sm text-gray-800">Human Resources</p>
+                                <p className="text-sm dark:text-slate-200 text-gray-800">Human Resources</p>
                             </div>
                         </div>
                         <div className="flex">
@@ -182,7 +200,7 @@ function AboutUs() {
                             />
                             <div className="flex flex-col justify-center">
                                 <p className="text-lg font-bold">Martin Garix</p>
-                                <p className="text-sm text-gray-800">Bad boy</p>
+                                <p className="text-sm dark:text-slate-200 text-gray-800">Bad boy</p>
                             </div>
                         </div>
                         <div className="flex">
@@ -193,7 +211,7 @@ function AboutUs() {
                             />
                             <div className="flex flex-col justify-center">
                                 <p className="text-lg font-bold">Andrew Larkin</p>
-                                <p className="text-sm text-gray-800">Backend Developer</p>
+                                <p className="text-sm dark:text-slate-200 text-gray-800">Backend Developer</p>
                             </div>
                         </div>
                         <div className="flex">
@@ -204,7 +222,7 @@ function AboutUs() {
                             />
                             <div className="flex flex-col justify-center">
                                 <p className="text-lg font-bold">Sophie Denmo</p>
-                                <p className="text-sm text-gray-800">Designer UI/UX</p>
+                                <p className="text-sm dark:text-slate-200 text-gray-800">Designer UI/UX</p>
                             </div>
                         </div>
                         <div className="flex">
@@ -215,7 +233,7 @@ function AboutUs() {
                             />
                             <div className="flex flex-col justify-center">
                                 <p className="text-lg font-bold">Benedict Caro</p>
-                                <p className="text-sm text-gray-800">Frontend Developer</p>
+                                <p className="text-sm dark:text-slate-200 text-gray-800">Frontend Developer</p>
                             </div>
                         </div>
                         <div className="flex">
@@ -226,7 +244,7 @@ function AboutUs() {
                             />
                             <div className="flex flex-col justify-center">
                                 <p className="text-lg font-bold">Adam Molly</p>
-                                <p className="text-sm text-gray-800">Full Stack Developer</p>
+                                <p className="text-sm dark:text-slate-200 text-gray-800">Full Stack Developer</p>
                             </div>
                         </div>
                     </div>

@@ -62,7 +62,7 @@ function Login() {
                     toast.error(errorMessage)
                 });
         else {
-            toast.error('Please put your vaid email address')
+            toast.error('Please put your valid email address')
         }
     }
     return (

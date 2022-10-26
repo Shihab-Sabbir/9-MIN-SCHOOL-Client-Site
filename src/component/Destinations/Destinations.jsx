@@ -1,8 +1,9 @@
 import { Pagination, Sidebar } from 'flowbite-react';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link, useLoaderData, useOutletContext } from 'react-router-dom';
 import Destination from './Destination';
 import { FiMonitor } from 'react-icons/fi'
+import toast from 'react-hot-toast';
 function Destinations() {
     let [page, setPage] = useState(1);
     const [allCourse, setAllCourse] = useState([]);
@@ -20,19 +21,19 @@ function Destinations() {
     const { pages, data, start, end } = locations;
     const pageNumber = Math.ceil(pages / 4);
     const { isMenuOpen } = useOutletContext();
+    const pagination = useRef()
     function onPageChange() {
     }
     function handleClick(event) {
-        const data = event.target.innerText;
-
-        if (page < pageNumber && data === 'Go forward') {
+        const data = event.target.innerText; console.log(data, pagination.current)
+        if (page < pageNumber && data === 'NEXT') {
             setPage(page + 1)
         }
-        else if (page === pageNumber && data === 'Go forward') {
-            window.alert('no more course to show')
+        else if (page === pageNumber && data === 'NEXT') {
+            toast.error('no more course to show')
         };
 
-        if (page > 1 && data === 'Go back') {
+        if (page > 1 && data === 'PREV') {
             setPage(page - 1)
         };
 
@@ -53,16 +54,18 @@ function Destinations() {
                             />)
                         }
                     </div>
-                    <div className="flex items-center justify-center text-center my-8">
-                        <Pagination onClick={handleClick}
-                            currentPage={page}
-                            layout="pagination"
-                            onPageChange={onPageChange}
-                            showIcons={true}
-                            totalPages={pageNumber || 0}
-                            previousLabel="Go back"
-                            nextLabel="Go forward"
-                        />
+                    <div className='w-full'>
+                        <div className="flex items-center justify-center text-center my-8">
+                            <Pagination ref={pagination} onClick={handleClick}
+                                currentPage={page}
+                                layout="pagination"
+                                onPageChange={onPageChange}
+                                showIcons={false}
+                                totalPages={pageNumber || 0}
+                                previousLabel='PREV'
+                                nextLabel='NEXT'
+                            />
+                        </div>
                     </div>
                 </div>
                 <div>
