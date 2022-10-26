@@ -41,7 +41,7 @@ function CourseDetails() {
     }
     return (
         <div className={isMenuOpen ? 'pt-[400px] mb-3 px-3 min-h-screen' : 'mb-3 p-3 min-h-screen'}>
-            <div className="min-h-screen bg-base-200 lg:max-w-[1100px] mx-auto p-2" ref={input}>
+            {data && <div className="min-h-screen bg-base-200 lg:max-w-[1100px] mx-auto p-2" ref={input}>
                 <div className="flex flex-col md:flex-row" >
                     <img src={image} ref={errImg} onError={() => { replaceImage() }} onLoad={replaceImage} className="max-w-full bg-white md:min-w-[50%] shadow md:max-h-[500px]" />
                     <div className='flex flex-col justify-between items-start min-w-full md:min-w-[50%] px-3 pb-1 md:pt-0 pt-5 md:max-h-[500px]'>
@@ -65,7 +65,11 @@ function CourseDetails() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>}
+            {data || <>
+                <p className="text-3xl">Sorry No Course Found , Please try again</p>
+                <Link rel="noopener noreferrer" to='/' className="px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900">Back to homepage</Link>
+            </>}
         </div>
     )
 }
