@@ -10,7 +10,8 @@ To Explore Live Site please Click , [Live Here](https://9-min-school.netlify.app
 - User password Retriving in case of nessecity.
 - Download course outline as pdf file.
 - Protected payment route.
-- Search facility.
+- Pagination facility.
+- Effective search method.
 - Smooth routing system.
 - Dark and Light theme implemented.
 - Errorpage assistance in case of fault.
