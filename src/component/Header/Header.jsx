@@ -129,7 +129,7 @@ function Header({ setSearch, toggle }) {
                                     <div className="relative w-full">
                                         <input type="search" id="search-dropdown" name='search' className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg rounded-l-lg border-l-gray-50 border-l-2 border border-gray-300 ring ring-gray-500 focus:border-gray-500 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-gray-500" placeholder="Search Courses..." required="" />
                                         <button type="submit" className="absolute top-0 right-0 p-2.5 text-sm font-medium text-white bg-white rounded-r-lg border border-gray-300 hover:bg-blue-800 focus:none focus:outline-none focus:ring-gray-300 dark:bg-black dark:hover:bg-blue-700 dark:focus:none">
-                                            <svg aria-hidden="true" className="w-5 h-5 dark:stroke-white stroke-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                                            <svg aria-hidden="true" className="w-5 h-5 dark:stroke-white stroke-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                                             <span className="sr-only">Search</span>
                                         </button>
                                     </div>
@@ -196,7 +196,7 @@ function Header({ setSearch, toggle }) {
                                                     <rect x="14" y="11" width="7" height="12" />
                                                 </svg>
                                                 <span className="ml-2 text-xl font-mono font-bold tracking-wide text-gray-800 uppercase">
-                                                    <span className='text-3xl'>9</span> <span>m<span className='text-red-600'>i</span>n sch<spna className='text-red-600'>oo</spna>l</span>
+                                                    <span className='text-3xl'>9</span> <span>m<span className='text-red-600'>i</span>n sch<span className='text-red-600'>oo</span>l</span>
                                                 </span>
                                             </NavLink>
                                         </div>
@@ -294,8 +294,10 @@ function Header({ setSearch, toggle }) {
                         )}
                     </div>
                     {user?.uid &&
-                        <div className="hidden lg:flex items-center space-x-4 pl-2 " title={user?.displayName}>
-                            <NavLink to='/profile'><img src={user?.photoURL} className="w-12 h-12 rounded-full dark:bg-gray-500" /></NavLink>
+                        <div className="hidden lg:flex items-center space-x-4 pl-2 " title={
+                            `User : ${user?.displayName}
+click to view user profile`}>
+                            <NavLink to='/profile'><img src={user?.photoURL} className="w-12 h-12 rounded-full dark:bg-gray-500 hover:ring-1 hover:outline-double hover:outline-offset-2 hover:outline-white" /></NavLink>
 
                         </div>
                     }

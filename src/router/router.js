@@ -17,9 +17,7 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 export const router = createBrowserRouter([
     {
         path: '/', errorElement: <ErrorPage />, element: <Layout />, children: [
-            {
-                path: '/', element: <Home />
-            },
+            { path: '/', element: <Home /> },
             { path: '/register', element: <Register /> },
             { path: '/login', element: <Login /> },
             { path: '/courses', element: <Destinations /> },
@@ -27,11 +25,7 @@ export const router = createBrowserRouter([
             { path: '/profile', element: <Profile /> },
             { path: '/blog', element: <Blog /> },
             { path: '/about', element: <AboutUs /> },
-            {
-                path: '/popular', loader: async () => {
-                    return fetch('https://9-min-school.vercel.app/courses');
-                }, element: <Popular />
-            },
+            { path: '/popular', element: <Popular /> },
             {
                 path: '/courses/:id', loader: async ({ params }) => {
                     return fetch(`https://9-min-school.vercel.app/course/${params.id}`);

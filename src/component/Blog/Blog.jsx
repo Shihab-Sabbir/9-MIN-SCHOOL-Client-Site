@@ -61,7 +61,7 @@ function Blog() {
                                 <p className="mb-4 text-xl font-medium">
                                     Why are you using firebase? What other options do you have to implement authentication?
                                 </p>
-                                <p className="dark:text-white text-gray-700 text-justify">
+                                <div className="dark:text-white text-gray-700 text-justify">
                                     1. Firebase is very powerful tool for reliable authentication process. Both manual login and third party type (facebook , google ,github etc.) login is
                                     possible here without wasting much time and effort.
                                     <br />
@@ -75,7 +75,7 @@ function Blog() {
                                         <li>f) Keycloak</li>
                                         <li>g) Amazon Cognito </li>
                                     </ul>
-                                </p>
+                                </div>
                             </div>
                             <div>
                                 <p className="mb-4 text-xl font-medium">

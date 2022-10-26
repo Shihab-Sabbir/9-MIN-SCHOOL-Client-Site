@@ -1,4 +1,4 @@
-import React, { Component, useRef, useState } from "react";
+import React, { Component, useEffect, useRef, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -6,7 +6,13 @@ import { Link, useLoaderData, useOutletContext } from "react-router-dom";
 import { BsFillArrowRightCircleFill, BsFillArrowLeftCircleFill } from 'react-icons/bs';
 function Popular() {
   const [currentData, setCurrentData] = useState({});
-  let data = useLoaderData();
+  const [data, setdata] = useState([]);
+  const [spinner, setSpinner] = useState(true);
+
+  useEffect(() => {
+    fetch(`https://9-min-school.vercel.app/courses`).then(res => res.json()).then(data => { setdata(data); setSpinner(false) }).catch(err => console.log(err));
+  }, []);
+
   const { isMenuOpen } = useOutletContext();
   const settings = {
     className: "center",
@@ -59,11 +65,12 @@ function Popular() {
   return (
     <div className={isMenuOpen ? 'pt-[400px]  min-h-screen' : ' min-h-screen pt-5'}>
       <p className="uppercase text-center font-bold text-xl text-black dark:text-white">Top Courses</p>
-      <div className="flex flex-col-reverse justify-end  items-center p-3 max-w-full lg:pt-[2%] pt-[10%]">
+      {spinner && <div className="mx-auto mt-[150px] w-16 h-16 border-4 border-dashed rounded-full animate-spin border-orange-400 dark:border-red-400"></div>}
+      {spinner || <div className="flex flex-col-reverse justify-end  items-center p-3 max-w-full lg:pt-[2%] pt-[10%]">
         <div className="flex flex-col justify-center items-center p-4 lg:min-w-[20%] min-h-fit">
-          <p className="uppercase font-bold text-xs py-1 h-[50px]">{currentData.name}</p>
-          <p className="uppercase font-bold text-xs py-1">${currentData.cost}</p>
-          <Link to={`../courses/${currentData.id}`} className="p-2 mt-3 dark:hover:bg-blue-200 dark:hover:text-white bg-slate-800 rounded-md hover:bg-slate-200 hover:text-black text-xs uppercase shadow-lg font-bold text-white dark:bg-slate-200 dark:text-black">
+          <p className="uppercase font-bold text-xs py-1 h-[50px]">{currentData?.name}</p>
+          <p className="uppercase font-bold text-xs py-1">${currentData?.cost}</p>
+          <Link to={`../courses/${currentData?.id}`} className="p-2 mt-3 dark:hover:bg-blue-200 dark:hover:text-white bg-slate-800 rounded-md hover:bg-slate-200 hover:text-black text-xs uppercase shadow-lg font-bold text-white dark:bg-slate-200 dark:text-black">
             Details
           </Link>
         </div>
@@ -75,7 +82,7 @@ function Popular() {
           }}
             className='border-2 dark:bg-white rounded-lg p-1'>
             {
-              data.map(item =>
+              data?.map(item =>
                 <img key={item.id} src={item.image} />
               )
             }
@@ -89,7 +96,7 @@ function Popular() {
             </button>
           </div>
         </div>
-      </div>
+      </div>}
     </div>
   );
 

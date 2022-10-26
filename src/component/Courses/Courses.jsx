@@ -22,11 +22,9 @@ function Courses() {
     const { pages, data, start, end } = locations;
     const pageNumber = Math.ceil(pages / 4);
     const { isMenuOpen } = useOutletContext();
-    const pagination = useRef()
-    function onPageChange() {
-    }
+    const pagination = useRef();
     function handleClick(event) {
-        const data = event.target.innerText; console.log(data, pagination.current)
+        const data = event.target.innerText;
         if (page < pageNumber && data === 'NEXT') {
             setPage(page + 1)
         }
@@ -57,11 +55,11 @@ function Courses() {
                         }
                     </div>
                     <div className='w-full'>
-                        <div className="flex items-center justify-center text-center my-8">
-                            <Pagination ref={pagination} onClick={handleClick}
+                        <div className="flex items-center justify-center text-center my-8" onClick={handleClick}>
+                            <Pagination ref={pagination}
+                                onPageChange={() => { console.log('changed') }}
                                 currentPage={page}
                                 layout="pagination"
-                                onPageChange={onPageChange}
                                 showIcons={false}
                                 totalPages={pageNumber || 0}
                                 previousLabel='PREV'
@@ -76,17 +74,17 @@ function Courses() {
                         <Sidebar aria-label="Sidebar with multi-level dropdown example"
                         >
                             <Sidebar.Items>
-                                <ul>
-                                    {
-                                        allCourse?.map(course =>
-                                            <p
-                                                key={course.id}
-                                                className='flex items-center '
-                                            >   <FiMonitor className='text-sm pr-2' />
-                                                <Link to={`../courses/${course.id}`} className='text-xs hover:bg-slate-200 p-1 w-full rounded-md'>{course.name.length > 30 ? course.name.slice(0, 30) + '...' : course.name}</Link>
-                                            </p>)
-                                    }
-                                </ul>
+
+                                {
+                                    allCourse?.map(course =>
+                                        <p
+                                            key={course.id}
+                                            className='flex items-center '
+                                        >   <FiMonitor className='text-sm pr-2' />
+                                            <Link to={`../courses/${course.id}`} className='text-xs hover:bg-slate-200 p-1 w-full rounded-md'>{course.name.length > 30 ? course.name.slice(0, 30) + '...' : course.name}</Link>
+                                        </p>)
+                                }
+
                             </Sidebar.Items>
                         </Sidebar>
                     </div>}
