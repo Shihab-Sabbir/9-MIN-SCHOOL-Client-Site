@@ -7,9 +7,6 @@ import { BsFillArrowRightCircleFill, BsFillArrowLeftCircleFill } from 'react-ico
 function Popular() {
   const [currentData, setCurrentData] = useState({});
   let data = useLoaderData();
-  const start = Math.floor(Math.random() * (11 - 0 + 1) + 0);
-  const end = start + 4;
-  data = data.slice(start, end);
   const { isMenuOpen } = useOutletContext();
   const settings = {
     className: "center",
@@ -27,7 +24,7 @@ function Popular() {
         breakpoint: 1024,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToScroll: 1,
           centerPadding: "30px",
         }
       },
@@ -35,7 +32,7 @@ function Popular() {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
           initialSlide: 2
         }
       },
@@ -72,9 +69,9 @@ function Popular() {
         </div>
         <div className="max-w-[85%] lg:max-w-[75%] max-h-fit ">
           <Slider ref={slider} {...settings} beforeChange={(currentSlide, nextSlide) => {
-            setCurrentData(data[currentSlide])
+            setCurrentData(data[nextSlide])
           }} onInit={() => {
-            setCurrentData(data[0])
+            setCurrentData(data[1])
           }}
             className='border-2 dark:bg-white rounded-lg p-1'>
             {
