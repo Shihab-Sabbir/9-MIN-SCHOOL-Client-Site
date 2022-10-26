@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import logo from '../../asset/logo.png'
 import './Header.css'
+import { Dropdown } from 'flowbite-react';
 function Header({ setSearch, toggle }) {
     const { isMenuOpen, setIsMenuOpen } = toggle;
     const [location, setLocation] = useState('');
@@ -56,7 +57,39 @@ function Header({ setSearch, toggle }) {
                                 Popular
                             </NavLink>
                         </li>
-                        <li>
+                        <li className='xl:hidden font-mono text-white z-50'>
+                            <Dropdown
+                                label="More"
+                                inline={true}
+                            >
+                                <Dropdown.Item>
+                                    <NavLink
+                                        to="/blog"
+                                        className={({ isActive }) => (isActive ? "active-class" : "non-active-class")}
+                                    >
+                                        Blog
+                                    </NavLink>
+                                </Dropdown.Item>
+                                <Dropdown.Item>
+                                    <NavLink
+                                        className={({ isActive }) => (isActive ? "active-class" : "non-active-class")}
+                                        to="/payment"
+                                        end
+                                    >
+                                        Payment
+                                    </NavLink>
+                                </Dropdown.Item>
+                                <Dropdown.Item>
+                                    <NavLink
+                                        to="/about"
+                                        className={({ isActive }) => (isActive ? "active-class" : "non-active-class")}
+                                    >
+                                        About us
+                                    </NavLink>
+                                </Dropdown.Item>
+                            </Dropdown>
+                        </li>
+                        <li className='hidden xl:flex'>
                             <NavLink
                                 to="/blog"
                                 className={({ isActive }) => (isActive ? "active-class" : "non-active-class")}
@@ -64,7 +97,7 @@ function Header({ setSearch, toggle }) {
                                 Blog
                             </NavLink>
                         </li>
-                        <li>
+                        <li className='hidden xl:flex'>
                             <NavLink
                                 className={({ isActive }) => (isActive ? "active-class" : "non-active-class")}
                                 to="/payment"
@@ -73,7 +106,7 @@ function Header({ setSearch, toggle }) {
                                 Payment
                             </NavLink>
                         </li>
-                        <li>
+                        <li className='hidden xl:flex'>
                             <NavLink
                                 to="/about"
                                 className={({ isActive }) => (isActive ? "active-class" : "non-active-class")}
@@ -90,14 +123,6 @@ function Header({ setSearch, toggle }) {
                             </NavLink>
                         </li>
                         <li>
-                            {/* <form className="relative min-w-[280px]" onSubmit={handleSearchInput}>
-                                <input type="search" id="default-search"
-                                    name='search'
-                                    className="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500" placeholder="Search Courses..." required />
-                                <button type="submit" className=" absolute right-2.5 bottom-2.5 bg-black rounded-lg text-sm px-4 py-2 hover:scale-105">
-                                    <svg aria-hidden="true" className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                                </button>
-                            </form> */}
                             <form className='rounded-lg lg:min-w-[280px]' onSubmit={handleSearchInput}>
                                 <div className="flex rounded-lg">
                                     <label htmlFor="search-dropdown" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300">Your Email</label>
@@ -138,11 +163,8 @@ function Header({ setSearch, toggle }) {
                             <div className="inline-flex items-center mx-2 sm:mx-4 md:mx-8">
                             </div>
                             {user?.uid && <div className="hidden sm:flex items-center p-2 space-x-4" title={user.displayName}>
-                                <img src={user?.photoURL} className="w-12 h-12 rounded-full dark:bg-gray-500" />
+                                <NavLink to='/profile'><img src={user?.photoURL} className="w-12 h-12 rounded-full dark:bg-gray-500" /></NavLink>
                                 <div>
-                                    <span className="hidden lg:flex items-center space-x-1">
-                                        <NavLink to='/profile' className="text-xs hover:underline text-black dark:text-white">View profile</NavLink>
-                                    </span>
                                 </div>
                             </div>}
                         </div>
@@ -273,13 +295,7 @@ function Header({ setSearch, toggle }) {
                     </div>
                     {user?.uid &&
                         <div className="hidden lg:flex items-center space-x-4 pl-2 " title={user?.displayName}>
-                            <img src={user?.photoURL} className="w-12 h-12 rounded-full dark:bg-gray-500" />
-                            <div>
-                                <h2 className="hidden xl:block text-sm text-blue-600 font-semibold">{user?.email || 'No Email'}</h2>
-                                <span className="flex items-center space-x-1">
-                                    <NavLink to='/profile' className="text-xs hover:underline  text-black dark:text-white">View profile</NavLink>
-                                </span>
-                            </div>
+                            <NavLink to='/profile'><img src={user?.photoURL} className="w-12 h-12 rounded-full dark:bg-gray-500" /></NavLink>
 
                         </div>
                     }
@@ -290,7 +306,7 @@ function Header({ setSearch, toggle }) {
                             {dark && <svg className=" fill-white cursor-pointer w-10 h-10 border-2 px-1 rounded-md " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" /></svg>}
                         </label>
                     </div>
-                    <div className={(user?.uid) ? "swap swap-rotate absolute top-[60px] right-[15px] z-50 sm:top-[10px]  sm:-right-[50px] md:top-[12px] md:right[0px] md:-right-[0px] md:-mr-[80px] lg:top-[100px] lg:hidden " : "swap swap-rotate absolute top-[60px] right-[15px] z-50 sm:top-[0px] sm:-right-[50px] md:top-[10%] md:right[0px] md:-right-[0px] md:-mr-[80px] lg:top-[100px] lg:hidden "}>
+                    <div className={(user?.uid) ? "swap swap-rotate absolute top-[65px] right-[15px] z-50 sm:top-[14px]  sm:-right-[50px] md:top-[16px] md:right[0px] md:-right-[0px] md:-mr-[80px] lg:top-[100px] lg:hidden " : "swap swap-rotate absolute top-[65px] right-[15px] z-50 sm:top-[0px] sm:-right-[50px] md:top-[10%] md:right[0px] md:-right-[0px] md:-mr-[80px] lg:top-[100px] lg:hidden "}>
                         <label className={isMenuOpen ? '' : 'hidden sm:block'}>
                             <input type="checkbox" className='hidden' onClick={handleDarkMode} />
                             {dark && <svg className=" fill-current sm:fill-white  !w-8 !h-8 sm:w-10 sm:h-10 border-2 px-1 rounded-md " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" /></svg>}

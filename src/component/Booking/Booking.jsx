@@ -14,7 +14,7 @@ function Booking() {
 
     const navigate = useNavigate();
     return (
-        <div className={isMenuOpen ? 'pt-[250px] dark:bg-slate-500 bg-slate-200' : 'dark:bg-slate-500 bg-slate-200'}>
+        <div className={isMenuOpen ? 'pt-[400px] dark:bg-slate-500 bg-slate-200' : 'dark:bg-slate-500 bg-slate-200'}>
             {(product?.cost || localData?.cost) ?
                 <div className="relative px-4 pt-16 mx-auto lg:py-32 md:px-8 xl:px-20 sm:max-w-xl md:max-w-full min-h-screen flex lg:flex-row flex-col">
                     <div className="max-w-xl mx-auto lg:max-w-screen-xl">
