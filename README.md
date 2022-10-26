@@ -14,6 +14,8 @@ To Explore Live Site please Click , [Live Here](https://9-min-school.netlify.app
 - Effective search method.
 - Smooth routing system.
 - Dark and Light theme implemented.
+- Local-Storage used to hold individual user's last added course data.
+- Session-strorage used to hold the user's selected theme.
 - Errorpage assistance in case of fault.
 - Responsive UI for Desktop , Tablet and small devices like mobile.
 - User frindly UI.
