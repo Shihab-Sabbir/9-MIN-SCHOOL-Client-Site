@@ -1,11 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
 import AboutUs from "../component/AboutUs/AboutUs";
 import Blog from "../component/Blog/Blog";
-import Booking from "../component/Booking/Booking";
-import Destinations from "../component/Destinations/Destinations";
+import Booking from "../component/Payment/Payment";
+import Destinations from "../component/Courses/Courses";
 import ErrorPage from "../component/ErrorPage/ErrorPage";
 import Home from "../component/Home/Home";
-import Hotel from "../component/Hotel/Hotel";
+import Hotel from "../component/CourseDetails/CourseDetails";
 import Layout from "../component/Layout/Layout";
 import Login from "../component/Login/Login";
 import Popular from "../component/Popular/Popular";

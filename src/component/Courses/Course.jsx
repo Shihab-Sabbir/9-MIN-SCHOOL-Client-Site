@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import loadingImg from '../../asset/loading.gif'
 import replacement from '../../asset/replacement.png'
 import { AuthContext } from '../../UserContext/UserContext';
-function Destination({ course }) {
+function Course({ course }) {
     const { image, name, id } = course;
     const { isOnline } = useContext(AuthContext);
     const errImg = useRef();
@@ -33,4 +33,4 @@ function Destination({ course }) {
     )
 }
 
-export default Destination;
+export default Course;

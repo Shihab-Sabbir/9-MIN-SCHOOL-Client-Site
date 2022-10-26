@@ -1,10 +1,10 @@
 import { Pagination, Sidebar } from 'flowbite-react';
 import React, { useEffect, useRef, useState } from 'react'
 import { Link, useLoaderData, useOutletContext } from 'react-router-dom';
-import Destination from './Destination';
+import Destination from './Course';
 import { FiMonitor } from 'react-icons/fi'
 import toast from 'react-hot-toast';
-function Destinations() {
+function Courses() {
     let [page, setPage] = useState(1);
     const [allCourse, setAllCourse] = useState([]);
     const [locations, setLocations] = useState([]);
@@ -96,4 +96,4 @@ function Destinations() {
     )
 }
 
-export default Destinations;
+export default Courses;

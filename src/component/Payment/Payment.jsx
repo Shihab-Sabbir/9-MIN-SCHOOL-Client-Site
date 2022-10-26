@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import { AuthContext } from '../../UserContext/UserContext';
 
-function Booking() {
+function Payment() {
     const { user, product } = useContext(AuthContext);
     const { isMenuOpen, totalStay } = useOutletContext();
     let [localData, setLocalData] = useState({})
@@ -61,4 +61,4 @@ function Booking() {
     )
 }
 
-export default Booking;
+export default Payment;

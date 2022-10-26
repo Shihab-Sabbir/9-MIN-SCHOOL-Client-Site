@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useLoaderData, useOutletContext } from 'react-router-dom';
-import Destination from '../Destinations/Destination';
+import Destination from '../Courses/Course';
 
 function Search() {
     const data = useLoaderData();
@@ -41,7 +41,7 @@ function Search() {
                     </>
                 }
             </div>
-       </div>
+        </div>
     )
 }
 

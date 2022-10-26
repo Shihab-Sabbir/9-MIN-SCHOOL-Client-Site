@@ -6,7 +6,7 @@ import { BsDownload } from 'react-icons/bs';
 import { jsPDF } from "jspdf";
 import logo from '../../asset/logo.png'
 import replacement from '../../asset/replacement.png'
-function Hotel() {
+function CourseDetails() {
     const data = useLoaderData();
     const { name, image, cost, details } = data;
     const { user } = useContext(AuthContext);
@@ -70,4 +70,4 @@ function Hotel() {
     )
 }
 
-export default Hotel;
+export default CourseDetails;
