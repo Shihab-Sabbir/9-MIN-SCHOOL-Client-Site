@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { useOutletContext } from 'react-router-dom';
+import { Link, useOutletContext } from 'react-router-dom';
 import { AuthContext } from '../../UserContext/UserContext';
 import Login from '../Login/Login';
 
@@ -59,7 +59,7 @@ function Profile() {
                                         </svg>
                                     </a>
                                     <a
-                                        
+
                                         className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
                                     >
                                         <svg viewBox="0 0 30 30" fill="currentColor" className="h-6">
@@ -68,7 +68,7 @@ function Profile() {
                                         </svg>
                                     </a>
                                     <a
-                                        
+
                                         className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
                                     >
                                         <svg viewBox="0 0 24 24" fill="currentColor" className="h-5">
@@ -76,7 +76,7 @@ function Profile() {
                                         </svg>
                                     </a>
                                     <a
-                                        
+
                                         className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
                                     >
                                         <svg viewBox="0 0 24 24" fill="currentColor" className="h-6">
@@ -99,11 +99,15 @@ function Profile() {
             }
             {
                 (!user?.uid) &&
-                <>
-                    <div className='text-center pt-10 font-bold uppercase'>No user is currently logged-in
+                <div className='w-full min-h-screen flex flex-col justify-start items-center'>
+                    <div className='text-center pt-10 font-bold uppercase mb-10'>No user is currently logged-in
                     </div>
-                    <Login />
-                </>
+                    <div>
+                        <Link to='/login' className="text-white bg-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#3b5998]/55 mr-2 mb-2" >
+                            Login
+                        </Link>
+                    </div>
+                </div>
             }
         </div>
     )

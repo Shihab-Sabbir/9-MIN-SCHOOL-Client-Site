@@ -16,7 +16,7 @@ function Courses() {
     }, [page]);
 
     useEffect(() => {
-        fetch(`https://9-min-school.vercel.app/courses`).then(res => res.json()).then(data => { setAllCourse(data); setSpinner(false) }).catch(err => console.log(err));
+        fetch(`https://9-min-school.vercel.app/courses`).then(res => res.json()).then(data => { setAllCourse(data); }).catch(err => console.log(err));
     }, []);
 
     const { pages, data, start, end } = locations;
@@ -68,25 +68,26 @@ function Courses() {
                         </div>
                     </div>
                 </div>}
-                <div>
-                    {spinner || <div className="w-full lg:h-fit p-2 pr-4 flex justify-center flex-col items-center">
+                <div className='p-2'>
+                    {spinner || <div className="w-full p-2 border-2 border-slate-200 rounded-lg dark:border-slate-600 lg:pr-4 flex justify-center flex-col items-center">
                         <p className='text-center uppercase text-sm font-bold pb-4'>all courses at a glance</p>
-                        <Sidebar aria-label="Sidebar with multi-level dropdown example"
+                        <aside className='max-w-[100vw] lg:min-w-[250px] flex justify-around bg-white dark:bg-slate-800 p-2'
                         >
-                            <Sidebar.Items>
+                            <ul className='grid lg:grid-cols-1 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-y-1 gap-x-4'>
 
                                 {
                                     allCourse?.map(course =>
                                         <p
                                             key={course.id}
-                                            className='flex items-center '
+                                            className='flex items-center lg:mb-[6%] 2xl:mb-[8%]
+                                            3xl:mb-[10%]'
                                         >   <FiMonitor className='text-sm pr-2' />
                                             <Link to={`../course/${course.id}`} className='text-xs hover:bg-slate-200 p-1 w-full rounded-md'>{course.name.length > 30 ? course.name.slice(0, 30) + '...' : course.name}</Link>
                                         </p>)
                                 }
 
-                            </Sidebar.Items>
-                        </Sidebar>
+                            </ul>
+                        </aside>
                     </div>}
                 </div>
             </div>

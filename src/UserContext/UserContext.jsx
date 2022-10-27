@@ -7,7 +7,6 @@ function UserContext({ children }) {
     const [loading, setLoading] = useState(true);
     const [isOnline, setIsOnline] = useState(navigator.onLine);
     const [dark, setDark] = useState(false);
-    const [product, setProduct] = useState({})
     const auth = getAuth(app);
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -32,7 +31,7 @@ function UserContext({ children }) {
     }, [])
 
     return (
-        <AuthContext.Provider value={{ user, setUser, loading, setLoading, isOnline, product, setProduct, dark, setDark }}>
+        <AuthContext.Provider value={{ user, setUser, loading, setLoading, isOnline, dark, setDark }}>
             {children}
         </AuthContext.Provider>
     )

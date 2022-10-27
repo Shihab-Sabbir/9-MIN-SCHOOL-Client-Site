@@ -21,7 +21,11 @@ export const router = createBrowserRouter([
             { path: '/register', element: <Register /> },
             { path: '/login', element: <Login /> },
             { path: '/courses', element: <Destinations /> },
-            { path: '/payment', element: <ProtectedRoute><Booking /></ProtectedRoute> },
+            {
+                path: '/payment/:id', loader: async ({ params }) => {
+                    return fetch(`https://9-min-school.vercel.app/course/${params.id}`);
+                }, element: <ProtectedRoute><Booking /></ProtectedRoute>
+            },
             { path: '/profile', element: <Profile /> },
             { path: '/blog', element: <Blog /> },
             { path: '/about', element: <AboutUs /> },

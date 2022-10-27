@@ -1,14 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useNavigate, useOutletContext } from 'react-router-dom';
+import { useLoaderData, useNavigate, useOutletContext } from 'react-router-dom';
 import { AuthContext } from '../../UserContext/UserContext';
 import toast from 'react-hot-toast';
 
 function Payment() {
-    const { user, product } = useContext(AuthContext);
-    const { isMenuOpen, totalStay } = useOutletContext();
+    const { user } = useContext(AuthContext);
+    const { isMenuOpen } = useOutletContext();
     let [localData, setLocalData] = useState({})
-
-
+    const data = useLoaderData();
+    const { name, image, cost, details, id } = data;
     useEffect(() => {
         setLocalData(JSON.parse(localStorage.getItem(`${user.uid}-course`)))
     }, [])
@@ -20,7 +20,7 @@ function Payment() {
     }
     return (
         <div className={isMenuOpen ? 'pt-[400px] dark:bg-slate-500 bg-slate-200' : 'dark:bg-slate-500 bg-slate-200'}>
-            {(product?.cost || localData?.cost) ?
+            {(cost || localData?.cost) ?
                 <div className="relative px-4 pt-16 mx-auto lg:py-32 md:px-8 xl:px-20 sm:max-w-xl md:max-w-full min-h-screen flex lg:flex-row flex-col">
                     <div className="max-w-xl mx-auto lg:max-w-screen-xl">
                         <div className="mb-16 lg:max-w-lg lg:mb-0">
@@ -31,10 +31,10 @@ function Payment() {
                                     </p>
                                 </div>
                                 <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-300 sm:text-4xl sm:leading-none">
-                                    {product?.name || localData?.name}
+                                    {name || localData?.name}
                                 </h2>
                                 <p className="text-base text-gray-700 dark:text-gray-300 md:text-lg">
-                                    {product.details || localData?.details}
+                                    {details || localData?.details}
                                 </p>
                             </div>
                         </div>
@@ -48,7 +48,7 @@ function Payment() {
                                 <div className="input_text relative w-full"> <input required type="date" className="bg-white dark:bg-gray-200 h-12 pl-7 outline-none px-2 focus:border-blue-900 transition-all w-full border-b " placeholder="mm/yyyy" data-slots="my" /> <span className="absolute left-0 text-sm -top-5 dark:text-black">Expiry</span> <i className="absolute left-2 top-4 text-gray-400 fa fa-calendar-o"></i> </div>
                                 <div className="input_text relative w-full"> <input required className="bg-white dark:bg-gray-200 h-12 pl-7 outline-none px-2 focus:border-blue-900 transition-all w-full border-b " type="tel" inputmode="numeric" pattern="[0-9\s]{3}" autocomplete="cc-number" maxlength="3" title='3 digit number' placeholder="xxx" /> <span className="absolute left-0 text-sm -top-5 dark:text-black">CVV</span> <i className="absolute left-2 top-4 text-gray-400 fa fa-lock"></i> </div>
                             </div>
-                            <p className="text-lg text-center mt-4 text-gray-600 font-semibold">Payment amount:${product.cost || localData?.cost || 0}</p>
+                            <p className="text-lg text-center mt-4 text-gray-600 font-semibold">Payment amount:${cost || localData?.cost || 0}</p>
                             <div className="flex justify-center mt-4"> <button type="submit" className="text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#F7BE38]/50 mr-2 mb-2">
                                 <svg className="mr-2 -ml-1 w-4 h-4" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="paypal" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M111.4 295.9c-3.5 19.2-17.4 108.7-21.5 134-.3 1.8-1 2.5-3 2.5H12.3c-7.6 0-13.1-6.6-12.1-13.9L58.8 46.6c1.5-9.6 10.1-16.9 20-16.9 152.3 0 165.1-3.7 204 11.4 60.1 23.3 65.6 79.5 44 140.3-21.5 62.6-72.5 89.5-140.1 90.3-43.4 .7-69.5-7-75.3 24.2zM357.1 152c-1.8-1.3-2.5-1.8-3 1.3-2 11.4-5.1 22.5-8.8 33.6-39.9 113.8-150.5 103.9-204.5 103.9-6.1 0-10.1 3.3-10.9 9.4-22.6 140.4-27.1 169.7-27.1 169.7-1 7.1 3.5 12.9 10.6 12.9h63.5c8.6 0 15.7-6.3 17.4-14.9 .7-5.4-1.1 6.1 14.4-91.3 4.6-22 14.3-19.7 29.3-19.7 71 0 126.4-28.8 142.9-112.3 6.5-34.8 4.6-71.4-23.8-92.6z"></path></svg>
                                 PAY NOW

@@ -31,7 +31,7 @@ To Explore Live Site please Click , [Live Here](https://9-min-school.netlify.app
 - React Slick
 - React Tailwind CSS
 - React Hot-toast
+- React-to-pdf
 - React Icons
 - Firebase Auntentication
-- jspdf
 - Local-Storage and Session-strorage

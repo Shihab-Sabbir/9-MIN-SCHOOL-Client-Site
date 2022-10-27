@@ -84,7 +84,7 @@ function Header({ setSearch, toggle }) {
                                         Blog
                                     </NavLink>
                                 </Dropdown.Item>
-                                <Dropdown.Item>
+                                {/* <Dropdown.Item>
                                     <NavLink
                                         className={({ isActive }) => (isActive ? "active-class" : "non-active-class non-active-class-drop-down")}
                                         to="/payment"
@@ -92,7 +92,7 @@ function Header({ setSearch, toggle }) {
                                     >
                                         Payment
                                     </NavLink>
-                                </Dropdown.Item>
+                                </Dropdown.Item> */}
                                 <Dropdown.Item>
                                     <NavLink
                                         to="/about"
@@ -111,7 +111,7 @@ function Header({ setSearch, toggle }) {
                                 Blog
                             </NavLink>
                         </li>
-                        <li className='hidden xl:flex'>
+                        {/* <li className='hidden xl:flex'>
                             <NavLink
                                 className={({ isActive }) => (isActive ? "active-class" : "non-active-class")}
                                 to="/payment"
@@ -119,7 +119,7 @@ function Header({ setSearch, toggle }) {
                             >
                                 Payment
                             </NavLink>
-                        </li>
+                        </li> */}
                         <li className='hidden xl:flex'>
                             <NavLink
                                 to="/about"
@@ -176,7 +176,7 @@ function Header({ setSearch, toggle }) {
                             </button>
                             <div className="inline-flex items-center mx-2 sm:mx-4 md:mx-8">
                             </div>
-                            {user?.uid && <div className="hidden sm:flex items-center p-2 space-x-4" title={user.displayName}>
+                            {user?.uid && <div className="hidden sm:flex items-center p-2 space-x-4" title={user.displayName || 'Name is restricted'}>
                                 <NavLink to='/profile'><img src={user?.photoURL} className="w-12 h-12 rounded-full dark:bg-gray-500" /></NavLink>
                                 <div>
                                 </div>
@@ -257,14 +257,14 @@ function Header({ setSearch, toggle }) {
                                                     Blog
                                                 </NavLink>
                                             </li>
-                                            <li onClick={() => setIsMenuOpen(false)}>
+                                            {/* <li onClick={() => setIsMenuOpen(false)}>
                                                 <NavLink
                                                     to="/payment"
                                                     className={({ isActive }) => (isActive ? "active-class" : "non-active-class-sm")}
                                                 >
                                                     Payment
                                                 </NavLink>
-                                            </li>
+                                            </li> */}
                                             <li onClick={() => setIsMenuOpen(false)}>
                                                 <NavLink
                                                     to="/about"
@@ -309,7 +309,7 @@ function Header({ setSearch, toggle }) {
                     </div>
                     {user?.uid &&
                         <div className="hidden lg:flex items-center space-x-4 pl-2 " title={
-                            `User : ${user?.displayName}
+                            `User : ${user?.displayName || 'Name is restricted'}
 click to view user profile`}>
                             <NavLink to='/profile'><img src={user?.photoURL} className="w-12 h-12 rounded-full dark:bg-gray-500 hover:ring-1 hover:outline-double hover:outline-offset-2 hover:outline-white" /></NavLink>
 
