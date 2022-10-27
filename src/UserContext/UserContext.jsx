@@ -31,7 +31,7 @@ function UserContext({ children }) {
     }, [])
 
     return (
-        <AuthContext.Provider value={{ user, setUser, loading, setLoading, isOnline, dark, setDark }}>
+        <AuthContext.Provider value={{ user, setUser, loading, setLoading, isOnline,  dark, setDark }}>
             {children}
         </AuthContext.Provider>
     )

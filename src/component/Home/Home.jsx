@@ -8,7 +8,7 @@ function Home() {
     const { dark } = useContext(AuthContext)
     return (
         <div  style={{ backgroundImage: `url(${bg})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
-            <div className={isMenuOpen ? 'pt-[350px] dark:hero-overlay' : 'pt-[120px] dark:hero-overlay'}>
+            <div className={isMenuOpen ? 'pt-[400px] dark:hero-overlay' : 'pt-[120px] dark:hero-overlay'}>
                 <div >
                     <div className="flex min-w-full justify-center px-2 py-16 lg:pt-0  lg:pb-0 ">
                         <div className="mb-16 lg:my-40 lg:max-w-lg lg:pr-5">

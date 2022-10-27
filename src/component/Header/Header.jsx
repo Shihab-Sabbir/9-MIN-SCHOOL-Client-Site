@@ -50,7 +50,7 @@ function Header({ setSearch, toggle }) {
                             <rect x="14" y="1" width="7" height="6" />
                             <rect x="14" y="11" width="7" height="12" />
                         </svg>
-                        <span className="ml-2 text-xl font-['Montserrat'] font-bold tracking-wide text-gray-100 uppercase">
+                        <span className="ml-2 text-xl font-['Montserrat'] flex items-center font-bold tracking-wide text-gray-100 uppercase">
                             <span className='text-3xl'>9</span> <span>m<span className='text-red-600'>i</span>n sch<span className='text-red-600'>oo</span>l</span>
                         </span>
                     </NavLink>
@@ -111,15 +111,15 @@ function Header({ setSearch, toggle }) {
                                 Blog
                             </NavLink>
                         </li>
-                        {/* <li className='hidden xl:flex'>
+                        <li className='hidden xl:flex'>
                             <NavLink
                                 className={({ isActive }) => (isActive ? "active-class" : "non-active-class")}
-                                to="/payment"
+                                to="/wish"
                                 end
                             >
-                                Payment
+                                WishList
                             </NavLink>
-                        </li> */}
+                        </li>
                         <li className='hidden xl:flex'>
                             <NavLink
                                 to="/about"
@@ -177,7 +177,10 @@ function Header({ setSearch, toggle }) {
                             <div className="inline-flex items-center mx-2 sm:mx-4 md:mx-8">
                             </div>
                             {user?.uid && <div className="hidden sm:flex items-center p-2 space-x-4" title={user.displayName || 'Name is restricted'}>
-                                <NavLink to='/profile'><img src={user?.photoURL} className="w-12 h-12 rounded-full dark:bg-gray-500" /></NavLink>
+                                <NavLink to='/profile' className='relative'>
+                                    <img src={user?.photoURL || logo} className="w-12 h-12 rounded-full dark:bg-gray-500 hover:ring-1 hover:outline-double hover:outline-offset-2 hover:outline-white" />
+                                    <p className='w-3 h-3 rounded-full shadow-md shadow-white bg-lime-400 absolute top-0 right-0'></p>
+                                </NavLink>
                                 <div>
                                 </div>
                             </div>}
@@ -257,14 +260,14 @@ function Header({ setSearch, toggle }) {
                                                     Blog
                                                 </NavLink>
                                             </li>
-                                            {/* <li onClick={() => setIsMenuOpen(false)}>
+                                            <li onClick={() => setIsMenuOpen(false)}>
                                                 <NavLink
-                                                    to="/payment"
+                                                    to="/wish"
                                                     className={({ isActive }) => (isActive ? "active-class" : "non-active-class-sm")}
                                                 >
-                                                    Payment
+                                                    WishList
                                                 </NavLink>
-                                            </li> */}
+                                            </li>
                                             <li onClick={() => setIsMenuOpen(false)}>
                                                 <NavLink
                                                     to="/about"
@@ -311,7 +314,10 @@ function Header({ setSearch, toggle }) {
                         <div className="hidden lg:flex items-center space-x-4 pl-2 " title={
                             `User : ${user?.displayName || 'Name is restricted'}
 click to view user profile`}>
-                            <NavLink to='/profile'><img src={user?.photoURL} className="w-12 h-12 rounded-full dark:bg-gray-500 hover:ring-1 hover:outline-double hover:outline-offset-2 hover:outline-white" /></NavLink>
+                            <NavLink to='/profile' className='relative'>
+                                <img src={user?.photoURL || logo} className="w-12 h-12 rounded-full dark:bg-gray-500 hover:ring-1 hover:outline-double hover:outline-offset-2 hover:outline-white" />
+                            <p className='w-3 h-3 rounded-full shadow-md shadow-white bg-lime-400 absolute top-0 right-0'></p>
+                            </NavLink>
 
                         </div>
                     }

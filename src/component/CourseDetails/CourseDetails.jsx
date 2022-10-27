@@ -1,25 +1,66 @@
 import { Button, Tooltip } from 'flowbite-react';
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { Link, useLoaderData, useNavigate, useOutletContext } from 'react-router-dom';
 import { AuthContext } from '../../UserContext/UserContext';
 import { BsDownload } from 'react-icons/bs';
+import { BiMessageSquareAdd } from 'react-icons/bi';
 import { jsPDF } from "jspdf";
 import Pdf from "react-to-pdf";
 import logo from '../../asset/logo.png'
 import replacement from '../../asset/replacement.png'
+import toast from 'react-hot-toast';
+
 function CourseDetails() {
     const data = useLoaderData();
     const { name, image, cost, details, id } = data;
     const { user } = useContext(AuthContext);
     const { isMenuOpen } = useOutletContext();
+    const [wishColor, setWishColor] = useState({});
     const navigate = useNavigate();
     // const doc = new jsPDF('p', 'px', 'letter');
-    function handleOnclick() {
-        if (user?.uid) {
-            localStorage.setItem(`${user.uid}-course`, JSON.stringify(data));
+    useEffect(() => {
+        const localData = JSON.parse(localStorage.getItem(`${user?.uid}-course`));
+        const isDataExist = localData?.find(item => item.id === id);
+        console.log(user)
+        if (isDataExist) {
+            setWishColor('text-red-600 dark:text-white')
         }
-        navigate(`/payment/${id}`);
+        else {
+            setWishColor('text-black dark:text-white')
+        }
+    }, [user?.uid])
+
+    function handleWishList() {
+        const localStoreData = (JSON.parse(localStorage.getItem(`${user?.uid}-course`)));
+        if (user?.uid) {
+            if (localStoreData?.length > 0) {
+                if (localStoreData?.find(item => item.id === data.id)) {
+                    toast.error('Removed from wish list');
+                    let remaining = localStoreData?.filter(item => item.id !== data.id);
+                    if (remaining === undefined) {
+                        localStorage.setItem(`${user.uid}-course`, JSON.stringify([]));
+                        setWishColor('text-black dark:text-white')
+                    }
+                    else {
+                        localStorage.setItem(`${user.uid}-course`, JSON.stringify(remaining));
+                        setWishColor('text-black dark:text-white')
+                    }
+                }
+                else {
+                    toast.success('Added in wish list');
+                    const newData = [...localStoreData, data]
+                    localStorage.setItem(`${user.uid}-course`, JSON.stringify(newData));
+                    setWishColor('text-red-600 dark:text-white')
+                }
+            }
+            else {
+                toast.success('Added in wish list');
+                localStorage.setItem(`${user.uid}-course`, JSON.stringify([data]));
+                setWishColor('text-red-600 dark:text-white')
+            }
+        }
     }
+
     const ref = useRef();
     const errImg = useRef(); // this is required for js pdf
     function replaceImage() {
@@ -52,8 +93,9 @@ function CourseDetails() {
                 </Pdf>
             </div> : ''}
             {data.id ? <div className="min-h-screen bg-base-200 lg:max-w-[1100px] mx-auto p-2" >
-                <div className="flex flex-col md:flex-row" >
-                    <img src={image} ref={errImg} onError={() => replaceImage} className="max-w-full bg-white md:min-w-[50%] shadow md:max-h-[500px]" />
+                <div className="flex flex-col md:flex-row relative" >
+                    <img src={image} ref={errImg} onError={() => replaceImage} className="max-w-full  bg-white md:min-w-[50%] shadow md:max-h-[500px]" />
+                    <p className='cursor-pointer absolute top-0 right-0 px-2 text-black font-bold text-2xl'>{<BiMessageSquareAdd title='Wish List' className={wishColor} onClick={handleWishList} />}</p>
                     <div className='flex flex-col justify-between items-start min-w-full md:min-w-[50%] px-3 pb-1 md:pt-0 pt-5 md:max-h-[500px]'>
                         <div>
                             <h1 className="text-2xl font-bold">{name}</h1>
@@ -61,7 +103,7 @@ function CourseDetails() {
                             <p className="py-4"><span className='font-bold text-sm'>Course Price : </span><span className='text-lg'>$</span>{cost}</p>
                         </div>
                         <div className='w-full flex items-center justify-between'>
-                            <button className="p-2 bg-lime-500 shadow-md rounded-md border hover:border-lime-600 hover:bg-white hover:text-lime-600 text-xs uppercase font-bold text-white" onClick={handleOnclick}>Get premium access</button>
+                            <Link to={`/payment/${id}`} className="p-2 bg-lime-500 shadow-md rounded-md border hover:border-lime-600 hover:bg-white hover:text-lime-600 text-xs uppercase font-bold text-white">Get premium access</Link>
                             <button className="p-2 bg-slate-800 rounded-md dark:border-white dark:border hover:bg-slate-200 hover:text-black text-xs uppercase shadow-lg font-bold text-white " onClick={() => navigate(-1)}>Back</button>
                         </div>
                     </div>

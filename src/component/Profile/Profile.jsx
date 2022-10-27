@@ -7,7 +7,7 @@ function Profile() {
     const { user } = useContext(AuthContext);
     const { isMenuOpen } = useOutletContext();
     return (
-        <div className={isMenuOpen ? 'pt-[300px]' : ''}>
+        <div className={isMenuOpen ? 'pt-[400px]' : ''}>
             {(user?.uid) &&
                 <>
                     <div className="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:pt-20">

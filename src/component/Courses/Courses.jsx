@@ -1,7 +1,7 @@
 import { Pagination, Sidebar } from 'flowbite-react';
 import React, { useEffect, useRef, useState } from 'react'
 import { Link, useOutletContext } from 'react-router-dom';
-import Destination from './Course';
+import Course from './Course';
 import { FiMonitor } from 'react-icons/fi'
 import toast from 'react-hot-toast';
 function Courses() {
@@ -41,14 +41,14 @@ function Courses() {
     }
 
     return (
-        <div className={isMenuOpen ? 'pt-[350px] min-h-screen' : 'min-h-screen'}>
+        <div className={isMenuOpen ? 'pt-[400px] min-h-screen' : 'min-h-screen'}>
             {spinner && <div className="mx-auto mt-[150px] w-16 h-16 border-4 border-dashed rounded-full animate-spin border-orange-400 dark:border-red-400"></div>}
             <div className='lg:flex-row flex-col flex'>
                 {spinner || <div className='flex flex-col justify-start items-center px-4 pt-2 '>
                     <p className='text-gray-400 pb-5 '>Showing courses {start} to {end - 1} out of {pages}</p>
                     <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'>
                         {
-                            data?.map(course => <Destination
+                            data?.map(course => <Course
                                 key={course.id}
                                 course={course}
                             />)

@@ -7,7 +7,7 @@ import { useOutletContext } from 'react-router-dom';
 function AboutUs() {
     const { isMenuOpen } = useOutletContext();
     return (
-        <div className={isMenuOpen ? 'pt-[350px]' : ''}>
+        <div className={isMenuOpen ? 'pt-[400px]' : ''}>
             <div className='py-5'>
                 <span className='flex justify-center items-center gap-2 md:gap-4'><svg
                     className="w-8 text-deep-purple-accent-400 pt-1"

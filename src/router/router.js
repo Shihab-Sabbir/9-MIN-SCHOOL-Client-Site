@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import AboutUs from "../component/AboutUs/AboutUs";
 import Blog from "../component/Blog/Blog";
-import Booking from "../component/Payment/Payment";
+import Payment from "../component/Payment/Payment";
 import Destinations from "../component/Courses/Courses";
 import ErrorPage from "../component/ErrorPage/ErrorPage";
 import Home from "../component/Home/Home";
@@ -13,6 +13,7 @@ import Register from "../component/Register/Register";
 import Search from "../component/Search/Search";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import CourseDetails from "../component/CourseDetails/CourseDetails";
+import WishCourses from "../component/WishCourses/WishCourses";
 
 export const router = createBrowserRouter([
     {
@@ -24,12 +25,13 @@ export const router = createBrowserRouter([
             {
                 path: '/payment/:id', loader: async ({ params }) => {
                     return fetch(`https://9-min-school.vercel.app/course/${params.id}`);
-                }, element: <ProtectedRoute><Booking /></ProtectedRoute>
+                }, element: <ProtectedRoute><Payment /></ProtectedRoute>
             },
             { path: '/profile', element: <Profile /> },
             { path: '/blog', element: <Blog /> },
             { path: '/about', element: <AboutUs /> },
             { path: '/popular', element: <Popular /> },
+            { path: '/wish', element: <WishCourses /> },
             {
                 path: '/course/:id', loader: async ({ params }) => {
                     return fetch(`https://9-min-school.vercel.app/course/${params.id}`);

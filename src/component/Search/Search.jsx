@@ -6,7 +6,7 @@ function Search() {
     const data = useLoaderData();
     const { isMenuOpen } = useOutletContext();
     return (
-        <div className={isMenuOpen ? 'pt-[350px]' : ''}>
+        <div className={isMenuOpen ? 'pt-[400px]' : ''}>
             <div className='flex flex-col justify-center items-center px-4 pt-4'>
 
                 {data?.length === 0 && <>
