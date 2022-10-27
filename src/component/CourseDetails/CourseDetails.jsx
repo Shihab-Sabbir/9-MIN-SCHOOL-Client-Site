@@ -94,16 +94,18 @@ function CourseDetails() {
             {data.id ? <div className="min-h-screen bg-base-200 lg:max-w-[1100px] mx-auto p-2" >
                 <div className="flex flex-col md:flex-row relative" >
                     <img src={image} ref={errImg} onError={() => replaceImage} className="max-w-full  bg-white md:min-w-[50%] shadow md:max-h-[500px]" />
-                    <p className='cursor-pointer absolute top-0 right-0 px-2 text-black font-bold text-2xl'>{<Tooltip
-                        content="Wish List"
-                        style="dark"
-                        placement='bottom'
-                    >
-                        <BiMessageSquareAdd title='Wish List' className={wishColor} onClick={handleWishList} />
-                    </Tooltip>}</p>
                     <div className='flex flex-col justify-between items-start min-w-full md:min-w-[50%] px-3 pb-1 md:pt-0 pt-5 md:max-h-[500px]'>
                         <div>
-                            <h1 className="text-2xl font-bold">{name}</h1>
+                            <div className='flex justify-between items-center'>
+                                <h1 className="text-2xl font-bold">{name}</h1>
+                                <p className='cursor-pointer absolute top-0 right-0 px-2 text-black font-bold text-2xl'>{<Tooltip
+                                    content="Wish List"
+                                    style="dark"
+                                    placement='bottom'
+                                >
+                                    <BiMessageSquareAdd title='Wish List' className={wishColor} onClick={handleWishList} />
+                                </Tooltip>}</p>
+                            </div>
                             <p className="py-4"><span className='font-bold text-sm'>Course Details : </span>{details}</p>
                             <p className="py-4"><span className='font-bold text-sm'>Course Price : </span><span className='text-lg'>$</span>{cost}</p>
                         </div>

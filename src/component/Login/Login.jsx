@@ -118,7 +118,7 @@ function Login() {
                             }} />
                             <label className='text-sm' htmlFor="remember">New user ?</label>
                         </div>
-                        <p onClick={handlePasswordReset} className='text-sm underline text-purple-500 cursor-pointer pt-[20px]'>Forget password ?</p>
+                        <p onClick={handlePasswordReset} className='text-sm max-w-fit underline text-purple-500 cursor-pointer pt-[20px]'>Forget password ?</p>
                         <p className='text-xs uppercase font-bold text-red-500 pt-[30px]'>{error}</p>
                         <div className="flex items-center justify-center mt-8">
                             <button className="text-white py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5" type='submit' >            Sign in
