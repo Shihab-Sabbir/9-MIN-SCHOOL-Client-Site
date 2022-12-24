@@ -6,7 +6,7 @@ To Explore Live Site please Click , [Live Here](https://9-min-school.netlify.app
 
 ## Features
 
-- Manual and third-party (google and github) login using firebase aunthentication.
+- Manual and third-party (google and github) login using firebase authentication.
 - User password Retriving in case of nessecity.
 - Download course outline as pdf file.
 - Protected payment route.
